@@ -20,7 +20,8 @@ export class MainNavBar extends Component {
     return (
       <div>
         <Navbar color="dark" dark>
-          <NavbarBrand href="/" className="mr-auto">#bloodpact</NavbarBrand>
+          <NavbarBrand href="/" className="mr-auto">#bloodpact
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
