@@ -1,4 +1,4 @@
-a:link {
+.links, .links:hover {
   text-decoration: none;
   color: black;
 }

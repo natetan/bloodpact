@@ -1,8 +1,33 @@
 import React, { Component } from 'react';
-
 import { Col, Container, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import './SignUpView.css';
 
 export class SignUpView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: undefined,
+      lastName: undefined,
+      birthdate: undefined,
+      email: undefined,
+      password: undefined,
+      passwordConfirmation: undefined
+    }
+  }
+
+  handleInput = (event) => {
+    let field = event.target.name; // which input
+    let value = event.target.value; // what value 
+    let changes = {};
+    changes[field] = value; //change this field
+    this.setState(changes); //update state
+  }
+
+  handleSignup = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+  }
+
   render() {
     return (
       <Container id='sign-up-container'>
@@ -10,50 +35,35 @@ export class SignUpView extends Component {
           <Row form>
             <Col md={6}>
               <FormGroup>
-                <Label for="exampleEmail">Email</Label>
-                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                <Label for='firstName'>First Name</Label>
+                <Input onInput={this.handleInput} type='text' name='firstName' id='firstName' placeholder='first name' />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label for="examplePassword">Password</Label>
-                <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                <Label for='lastName'>Last Name</Label>
+                <Input onInput={this.handleInput} type='text' name='lastName' id='lastName' placeholder='last name' />
               </FormGroup>
             </Col>
           </Row>
           <FormGroup>
-            <Label for="exampleAddress">Address</Label>
-            <Input type="text" name="address" id="exampleAddress" placeholder="1234 Main St" />
+            <Label for='birthdate'>Birthdate</Label>
+            <Input onInput={this.handleInput} type='date' name='date' id='birthdate' placeholder='birthdate'
+            />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleAddress2">Address 2</Label>
-            <Input type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor" />
+            <Label for='email'>Email</Label>
+            <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='email' />
           </FormGroup>
-          <Row form>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="exampleCity">City</Label>
-                <Input type="text" name="city" id="exampleCity" />
-              </FormGroup>
-            </Col>
-            <Col md={4}>
-              <FormGroup>
-                <Label for="exampleState">State</Label>
-                <Input type="text" name="state" id="exampleState" />
-              </FormGroup>
-            </Col>
-            <Col md={2}>
-              <FormGroup>
-                <Label for="exampleZip">Zip</Label>
-                <Input type="text" name="zip" id="exampleZip" />
-              </FormGroup>
-            </Col>
-          </Row>
-          <FormGroup check>
-            <Input type="checkbox" name="check" id="exampleCheck" />
-            <Label for="exampleCheck" check>Check me out</Label>
+          <FormGroup>
+            <Label for='password'>Password</Label>
+            <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='password' />
           </FormGroup>
-          <Button>Sign in</Button>
+          <FormGroup>
+            <Label for='password-confirm'>Confirm Password</Label>
+            <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='Confirm password' />
+          </FormGroup>
+          <Button onClick={this.handleSignup}>Sign up</Button>
         </Form>
       </Container>
     );

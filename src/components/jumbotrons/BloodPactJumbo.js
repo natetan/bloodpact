@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 
-import './BloodPactHeader.css';
+import './BloodPactJumbo.css';
 
 export class BloodPactHeader extends Component {
   render() {

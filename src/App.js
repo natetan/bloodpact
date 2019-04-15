@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import './App.css';
 import { MainNavBar } from './components/navs/MainNavBar'
-import { BloodPactHeader } from './components/jumbotrons/BloodPactHeader';
-import {SignUpView} from './components/views/SignUpView';
+import { BloodPactHeader } from './components/jumbotrons/BloodPactJumbo';
+import { SignUpView } from './components/views/SignUpView';
+import { BloodPactFooter } from './components/footers/BloodPactFooter';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route path='/signup/' component={SignUpView} />
           <Redirect to='/' />
         </Switch>
+        <BloodPactFooter />
       </div>
     );
   }

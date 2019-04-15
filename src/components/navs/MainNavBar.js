@@ -56,7 +56,7 @@ export class MainNavBar extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    <Link to='/signup/'>Sign Up</Link>
+                    <Link className='links' to='/signup/'>Sign Up</Link>
                   </DropdownItem>
                   <DropdownItem>
                     Log In
