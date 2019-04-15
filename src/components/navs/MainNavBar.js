@@ -45,10 +45,14 @@ export class MainNavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/about/">About</NavLink>
+                <NavLink>
+                  <Link className='nav-links' to='/about'>About</Link>
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/help/">Help</NavLink>
+                <NavLink>
+                  <Link className='nav-links' to='/help'>Help</Link>
+                </NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

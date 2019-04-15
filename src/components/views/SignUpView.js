@@ -16,11 +16,11 @@ export class SignUpView extends Component {
   }
 
   handleInput = (event) => {
-    let field = event.target.name; // which input
-    let value = event.target.value; // what value 
+    let field = event.target.name; // the input
+    let value = event.target.value; // its value
     let changes = {};
-    changes[field] = value; //change this field
-    this.setState(changes); //update state
+    changes[field] = value;
+    this.setState(changes);
   }
 
   handleSignup = (event) => {
