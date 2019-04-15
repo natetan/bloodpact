@@ -15,6 +15,7 @@ export class SignUpView extends Component {
     }
   }
 
+  // Updates the state when there is input in the fields
   handleInput = (event) => {
     let field = event.target.name; // the input
     let value = event.target.value; // its value
@@ -23,6 +24,7 @@ export class SignUpView extends Component {
     this.setState(changes);
   }
 
+  // Handles the sign up
   handleSignup = (event) => {
     event.preventDefault();
     console.log(this.state);
