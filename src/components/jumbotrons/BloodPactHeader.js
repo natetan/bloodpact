@@ -6,7 +6,7 @@ import './BloodPactHeader.css';
 export class BloodPactHeader extends Component {
   render() {
     return (
-      <div>
+      <div id='jumbo'>
         <Jumbotron>
           <h1 className='display-3'>this is #bloodpact</h1>
           <p className='lead'>Save lives and connect with others in our blood-donating community.</p>

@@ -12,6 +12,8 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import './MainNavBar.css'
 
 export class MainNavBar extends Component {
   constructor(props) {
@@ -54,7 +56,7 @@ export class MainNavBar extends Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    <NavLink to='/signup'>Sign Up</NavLink>
+                    <Link to='/signup/'>Sign Up</Link>
                   </DropdownItem>
                   <DropdownItem>
                     Log In
