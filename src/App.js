@@ -12,9 +12,9 @@ class App extends Component {
       <div className='App'>
         <MainNavBar />
         <Switch>
-          <Route exact path='/' component={BloodPactHeader} />
+          <Route exact path={'/'} component={BloodPactHeader} />
           <Route path='/signup/' component={SignUpView} />
-          <Redirect to='/' />
+          <Redirect to={'/'} />
         </Switch>
         <BloodPactFooter />
       </div>
