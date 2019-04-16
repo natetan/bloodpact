@@ -40,7 +40,9 @@ export class MainNavBar extends Component {
     return (
       <div>
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand href="/">#bloodpact</NavbarBrand>
+          <NavbarBrand>
+            <Link className='nav-links' to='/'>#bloodpact</Link>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
