@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d495928d63cad3eaa062",
+    "revision": "e3164c4e37128576ff17",
     "url": "/bloodpact/static/css/main.0ef5168f.chunk.css"
   },
   {
-    "revision": "d495928d63cad3eaa062",
-    "url": "/bloodpact/static/js/main.82e948f8.chunk.js"
+    "revision": "e3164c4e37128576ff17",
+    "url": "/bloodpact/static/js/main.855b2cd1.chunk.js"
   },
   {
     "revision": "306b6dd823b50240d4e9",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/bloodpact/static/js/2.58dbb71c.chunk.js"
   },
   {
-    "revision": "ca45ed47c39e1d468cb26edc21deb22f",
+    "revision": "7a436a311e31f71c23c381235950cac7",
     "url": "/bloodpact/index.html"
   }
 ];
