@@ -1,0 +1,15 @@
+.links {
+  color: black;
+}
+
+.nav-links {
+  color: lightgray;
+}
+
+.links:hover, .nav-links:hover {
+  color: red;
+}
+
+.links, .links:hover, .nav-links, .nav-links:hover {
+  text-decoration: none;
+}
