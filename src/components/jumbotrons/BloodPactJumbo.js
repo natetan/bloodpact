@@ -3,7 +3,7 @@ import { Jumbotron, Button } from 'reactstrap';
 
 import './BloodPactJumbo.css';
 
-export class BloodPactHeader extends Component {
+export class BloodPactJumbo extends Component {
   render() {
     return (
       <div id='jumbo'>
