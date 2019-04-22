@@ -1,15 +1,15 @@
 {
-  "main.css": "/bloodpact/static/css/main.0ef5168f.chunk.css",
-  "main.js": "/bloodpact/static/js/main.850e3bfe.chunk.js",
-  "main.js.map": "/bloodpact/static/js/main.850e3bfe.chunk.js.map",
+  "main.css": "/bloodpact/static/css/main.5a5498e7.chunk.css",
+  "main.js": "/bloodpact/static/js/main.ca9e50f1.chunk.js",
+  "main.js.map": "/bloodpact/static/js/main.ca9e50f1.chunk.js.map",
   "runtime~main.js": "/bloodpact/static/js/runtime~main.eb593853.js",
   "runtime~main.js.map": "/bloodpact/static/js/runtime~main.eb593853.js.map",
   "static/css/2.f6f02e21.chunk.css": "/bloodpact/static/css/2.f6f02e21.chunk.css",
-  "static/js/2.2bb9d6ca.chunk.js": "/bloodpact/static/js/2.2bb9d6ca.chunk.js",
-  "static/js/2.2bb9d6ca.chunk.js.map": "/bloodpact/static/js/2.2bb9d6ca.chunk.js.map",
+  "static/js/2.e1dc4843.chunk.js": "/bloodpact/static/js/2.e1dc4843.chunk.js",
+  "static/js/2.e1dc4843.chunk.js.map": "/bloodpact/static/js/2.e1dc4843.chunk.js.map",
   "index.html": "/bloodpact/index.html",
-  "precache-manifest.bd446238fee660111ee46973a323f1f6.js": "/bloodpact/precache-manifest.bd446238fee660111ee46973a323f1f6.js",
+  "precache-manifest.6804a67f0bf37037993554341c37d7dd.js": "/bloodpact/precache-manifest.6804a67f0bf37037993554341c37d7dd.js",
   "service-worker.js": "/bloodpact/service-worker.js",
   "static/css/2.f6f02e21.chunk.css.map": "/bloodpact/static/css/2.f6f02e21.chunk.css.map",
-  "static/css/main.0ef5168f.chunk.css.map": "/bloodpact/static/css/main.0ef5168f.chunk.css.map"
+  "static/css/main.5a5498e7.chunk.css.map": "/bloodpact/static/css/main.5a5498e7.chunk.css.map"
 }

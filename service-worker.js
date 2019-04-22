@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/bloodpact/precache-manifest.bd446238fee660111ee46973a323f1f6.js"
+  "/bloodpact/precache-manifest.6804a67f0bf37037993554341c37d7dd.js"
 );
 
 workbox.clientsClaim();
