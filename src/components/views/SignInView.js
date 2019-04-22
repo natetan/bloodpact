@@ -28,6 +28,9 @@ export class SignInView extends Component {
       password: this.state.password,
     }
     this.props.handleSignIn(user);
+
+    // Redirect to home page
+    this.props.history.push('/');
   }
 
   render() {

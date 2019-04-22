@@ -36,6 +36,9 @@ export class SignUpView extends Component {
       passwordConfirmation: this.state.passwordConfirmation,
     }
     this.props.handleSignUp(user);
+
+    // Redirect to home page
+    this.props.history.push('/');
   }
 
   render() {

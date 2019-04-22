@@ -3,16 +3,14 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './MainNavBar.css'
 
 export class MainNavBar extends Component {
@@ -34,6 +32,9 @@ export class MainNavBar extends Component {
   handleSignOut = (event) => {
     event.preventDefault();
     this.props.handleSignOut();
+
+    // Redirect to home page
+    return <Redirect to={'/'} />
   }
 
   render() {
