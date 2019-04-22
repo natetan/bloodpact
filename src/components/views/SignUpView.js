@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Container, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Alert, Col, Container, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import './SignUpView.css';
 
 export class SignUpView extends Component {
@@ -25,14 +25,23 @@ export class SignUpView extends Component {
   }
 
   // Handles the sign up
-  handleSignup = (event) => {
+  handleSignUp = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    let user = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      birthdate: this.state.birthdate,
+      email: this.state.email,
+      password: this.state.password,
+      passwordConfirmation: this.state.passwordConfirmation,
+    }
+    this.props.handleSignUp(user);
   }
 
   render() {
     return (
       <Container id='sign-up-container'>
+        {this.props.errorMessage && <Alert color='danger'>{this.props.errorMessage}</Alert>}
         <Form>
           <Row form>
             <Col md={6}>
@@ -50,7 +59,7 @@ export class SignUpView extends Component {
           </Row>
           <FormGroup>
             <Label for='birthdate'>Birthdate</Label>
-            <Input onInput={this.handleInput} type='date' name='date' id='birthdate' placeholder='birthdate'
+            <Input onInput={this.handleInput} type='date' name='birthdate' id='birthdate' placeholder='birthdate'
             />
           </FormGroup>
           <FormGroup>
@@ -65,7 +74,7 @@ export class SignUpView extends Component {
             <Label for='password-confirm'>Confirm Password</Label>
             <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='Confirm password' />
           </FormGroup>
-          <Button onClick={this.handleSignup}>Sign up</Button>
+          <Button onClick={this.handleSignUp}>Sign up</Button>
         </Form>
       </Container>
     );

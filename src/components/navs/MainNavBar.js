@@ -31,30 +31,49 @@ export class MainNavBar extends Component {
     });
   }
 
-  handleSignOut(event) {
-    console.log('This is the sign out button');
-    console.log(event.target);
+  handleSignOut = (event) => {
+    event.preventDefault();
+    this.props.handleSignOut();
   }
 
   render() {
-    return (
-      <div>
+    let nav;
+    if (this.props.displayName) {
+      nav = (
         <Navbar color="dark" dark expand="md">
-          <NavbarBrand>
-            <Link className='nav-links' to='/'>#bloodpact</Link>
-          </NavbarBrand>
+          <Link className='nav-links navbar-brand' to='/'>#bloodpact</Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink>
-                  <Link className='nav-links' to='/about'>About</Link>
-                </NavLink>
+                <Link className='nav-links nav-link' to='/about'>About</Link>
               </NavItem>
               <NavItem>
-                <NavLink>
-                  <Link className='nav-links' to='/help'>Help</Link>
-                </NavLink>
+                <Link className='nav-links nav-link' to='/help'>Help</Link>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>{this.props.displayName}</DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem disabled>{this.props.email}</DropdownItem>
+                  <DropdownItem onClick={this.handleSignOut}>Logout</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      )
+    } else {
+      nav = (
+        <Navbar color="dark" dark expand="md">
+          <Link className='nav-links navbar-brand' to='/'>#bloodpact</Link>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <Link className='nav-links nav-link' to='/about'>About</Link>
+              </NavItem>
+              <NavItem>
+                <Link className='nav-links nav-link' to='/help'>Help</Link>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -65,13 +84,18 @@ export class MainNavBar extends Component {
                     <Link className='links' to='/signup/'>Sign Up</Link>
                   </DropdownItem>
                   <DropdownItem>
-                    Log In
+                    <Link className='links' to='/signin/'>Log In</Link>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
         </Navbar>
+      );
+    }
+    return (
+      <div>
+        {nav}
       </div>
     );
   }
