@@ -1,3 +1,35 @@
+
+/*@font-face {
+  font-family: Aleo;
+  src: url(Aleo-Bold.ttf);
+}*/
+
+
+
 #sign-up-container {
   margin-top: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  color: #0F1A20;
+  font-size: 120%;
+  width: 45%;
+  background-color: white;
 }
+
+#sign-up-title {
+  color:#F9423A;
+  font-size: 150%;
+  font-weight: bold;
+  /*font-family: Aleo;*/
+  padding-bottom: 5%;
+}
+
+#sign-up-button {
+  background-color: #F9423A;
+  width: 50%;
+  height: 200%;
+  border-radius: 25px;
+}
+

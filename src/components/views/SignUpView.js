@@ -45,39 +45,40 @@ export class SignUpView extends Component {
     return (
       <Container id='sign-up-container'>
         {this.props.errorMessage && <Alert color='danger'>{this.props.errorMessage}</Alert>}
-        <Form>
+        <Row id="sign-up-title">Create Free Account</Row>
+        <Form id="form">
           <Row form>
             <Col md={6}>
               <FormGroup>
-                <Label for='firstName'>First Name</Label>
+                {/*<Label for='firstName'>First Name</Label>*/}
                 <Input onInput={this.handleInput} type='text' name='firstName' id='firstName' placeholder='first name' />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label for='lastName'>Last Name</Label>
+                {/*<Label for='lastName'>Last Name</Label>*/}
                 <Input onInput={this.handleInput} type='text' name='lastName' id='lastName' placeholder='last name' />
               </FormGroup>
             </Col>
           </Row>
           <FormGroup>
-            <Label for='birthdate'>Birthdate</Label>
+            <Label for='birthdate'>Date of birth</Label>
             <Input onInput={this.handleInput} type='date' name='birthdate' id='birthdate' placeholder='birthdate'
             />
           </FormGroup>
           <FormGroup>
-            <Label for='email'>Email</Label>
+            {/*<Label for='email'>Email</Label>*/}
             <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='email' />
           </FormGroup>
           <FormGroup>
-            <Label for='password'>Password</Label>
+            {/*<Label for='password'>Password</Label>*/}
             <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='password' />
           </FormGroup>
           <FormGroup>
-            <Label for='password-confirm'>Confirm Password</Label>
-            <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='Confirm password' />
+            {/*<Label for='password-confirm'>Confirm Password</Label>*/}
+            <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='confirm password' />
           </FormGroup>
-          <Button onClick={this.handleSignUp}>Sign up</Button>
+          <Button className="btn btn-danger" id="sign-up-button" onClick={this.handleSignUp}>SIGN UP</Button>
         </Form>
       </Container>
     );

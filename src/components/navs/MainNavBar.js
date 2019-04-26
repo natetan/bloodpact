@@ -41,7 +41,7 @@ export class MainNavBar extends Component {
     let nav;
     if (this.props.displayName) {
       nav = (
-        <Navbar color="dark" dark expand="md">
+        <Navbar color="light" dark expand="md">
           <Link className='nav-links navbar-brand' to='/'>#bloodpact</Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
