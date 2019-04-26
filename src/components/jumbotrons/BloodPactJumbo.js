@@ -23,8 +23,11 @@ export class BloodPactJumbo extends Component {
 						<Button
 							className="jumboButton"
 							buttonStyle={{ borderRadius: 50 }}
-							style={{ borderRadius: 50 }}
-							color="danger"
+							style={{
+								borderRadius: 50,
+								backgroundColor: "#ff0000",
+								borderColor: "#ff0000"
+							}}
 						>
 							BECOME A DONOR TODAY
 						</Button>
