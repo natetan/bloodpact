@@ -78,7 +78,9 @@ export class SignUpView extends Component {
             {/*<Label for='password-confirm'>Confirm Password</Label>*/}
             <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='confirm password' />
           </FormGroup>
-          <Button className="btn btn-danger" id="sign-up-button" onClick={this.handleSignUp}>SIGN UP</Button>
+          <Row id="button-row">
+            <Button className="btn btn-danger" id="sign-up-button" onClick={this.handleSignUp}>SIGN UP</Button>
+          </Row>
         </Form>
       </Container>
     );
