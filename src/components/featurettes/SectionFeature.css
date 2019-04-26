@@ -1,3 +1,19 @@
-.left-section {
+.featurette {
   margin-top: 150px;
+}
+
+.featurette-heading-right {
+  text-align: right;
+}
+
+h3, h1, .lead {
+  color: white;
+}
+
+.teamList {
+  background-color: black
+}
+
+.lastPerson {
+  margin-bottom: 50px;
 }
