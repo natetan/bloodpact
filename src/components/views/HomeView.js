@@ -14,21 +14,24 @@ export class HomeView extends Component {
 			<div className="body">
 				<BloodPactJumbo />
 				<LeftSectionFeature
-					title={"01. Problem Statement"}
+					number={"01. "}
+					title={"Problem Statement"}
 					description={"About"}
 					content={strings.about}
 				/>
 				<RightSectionFeature
-					title={"02. Mission"}
+					number={"02. "}
+					title={"Mission"}
 					description={"Goal"}
 					content={strings.about}
 				/>
 				<LeftSectionFeature
-					title={"03. Solution"}
+					number={"03. "}
+					title={"Solution"}
 					description={"Our Product"}
 					content={strings.about}
 				/>
-				<OurTeam title={"04. People"} description={"Our Team"} />
+				<OurTeam number={"04. "} title={"People"} description={"Our Team"} />
 			</div>
 		);
 	}

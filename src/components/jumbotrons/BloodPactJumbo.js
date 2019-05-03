@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Jumbotron, Button } from "reactstrap";
-import landingImage from "../../img/landingPage/landingPageImg.jpg";
+import landingImage from "../../img/landingPage/landingPageImg.png";
 
 import "./BloodPactJumbo.css";
 
@@ -8,13 +8,7 @@ export class BloodPactJumbo extends Component {
 	render() {
 		return (
 			<div>
-				<Jumbotron
-					fluid
-					// style={{
-					// 	backgroundImage: `url(${landingImage})`
-					// }}
-					className="jumbo"
-				>
+				<Jumbotron fluid className="jumbo">
 					<h1 className="display-4">
 						Your blood has the power to help millions.
 					</h1>

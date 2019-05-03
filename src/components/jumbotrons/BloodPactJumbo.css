@@ -3,7 +3,7 @@
 }
 
 .jumbo {
-  background: url("../../img/landingPage/landingPageImg.jpg") no-repeat fixed center;
+  background: url("../../img/landingPage/landingPageImg.png") no-repeat fixed center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 820px;
@@ -11,5 +11,5 @@
 }
 
 .display-4 {
-  padding-top: 4em
+  padding-top: 4em;
 }

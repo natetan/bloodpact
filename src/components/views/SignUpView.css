@@ -1,3 +1,33 @@
+
 #sign-up-container {
   margin-top: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  color: #7F7F7F;
+  font-size: 110%;
+  width: 45%;
+  background-color: white;
+  font-family: Aleo-Regular;
+  border-radius: 2px;
 }
+
+#sign-up-title {
+  color:#F9423A;
+  font-size: 150%;
+  padding-bottom: 5%;
+}
+
+#sign-up-button {
+  background-color: #F9423A;
+  width: 50%;
+  height: 200%;
+  border-radius: 25px;
+}
+
+#button-row {
+  display: flex; 
+  justify-content: center;
+}
+
