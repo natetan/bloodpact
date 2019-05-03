@@ -1,0 +1,31 @@
+.dashboard {
+  padding: 1%;
+}
+
+.dash-left-pane {
+  background: #f9423a;
+  text-align: center;
+  border-radius: 5px;
+}
+.dash-left-pane-list {
+  margin-top: 3%;
+}
+
+.isActive {
+  background: white;
+  color: #f9423a !important;
+}
+
+.dash-nav-item {
+  color: white !important;
+}
+
+.dash-nav-item:hover {
+  color: #f9423a !important;
+  background: white;
+  cursor: pointer;
+}
+
+.sub-text {
+  color: #f9423a;
+}

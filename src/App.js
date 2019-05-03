@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router";
+import firebase from "firebase/app";
 import "./App.css";
 import { MainNavBar } from "./components/navs/MainNavBar";
 import { HomeView } from "./components/views/HomeView";
 import { SignUpView } from "./components/views/SignUpView";
 import { SignInView } from "./components/views/SignInView";
 import { BloodPactFooter } from "./components/footers/BloodPactFooter";
-import firebase from "firebase/app";
+import { DashboardView } from "./components/views/DashboardView";
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			errorMessage: null
+			errorMessage: null,
+			tab: 1
 		};
 	}
 
@@ -94,6 +96,10 @@ class App extends Component {
 			});
 	};
 
+	switchTabs = tab => {
+		this.setState({ tab: tab });
+	};
+
 	render() {
 		let signUpView = routerProps => {
 			return (
@@ -129,11 +135,25 @@ class App extends Component {
 			nav = <MainNavBar />;
 		}
 
+		let mainView = routerProps => {
+			if (this.state.user) {
+				return (
+					<DashboardView
+						{...routerProps}
+						tab={this.state.tab}
+						switchTabs={this.switchTabs}
+						displayName={this.state.user.displayName}
+					/>
+				);
+			} else {
+				return <HomeView {...routerProps} />;
+			}
+		};
 		return (
 			<div className="App">
 				{nav}
 				<Switch>
-					<Route exact path={"/"} component={HomeView} />
+					<Route exact path={"/"} render={mainView} />
 					<Route path="/signup/" render={signUpView} />
 					<Route path="/signin/" render={signInView} />
 					<Redirect to={"/"} />
