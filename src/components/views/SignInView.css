@@ -1,3 +1,32 @@
-#sign-up-container {
+
+#sign-in-container {
   margin-top: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2%;
+  padding-bottom: 3%;
+  color: #7F7F7F;
+  font-size: 110%;
+  width: 45%;
+  background-color: white;
+  margin-bottom: 10%;
+  font-family: Aleo-Regular;
+  border-radius: 2px;
+}
+
+#sign-in-title {
+  color:#F9423A;
+  font-size: 150%;
+  padding-bottom: 5%;
+}
+
+#sign-in-button {
+  background-color: #F9423A;
+  width: 50%;
+  border-radius: 25px;
+}
+
+#button-row {
+  display: flex; 
+  justify-content: center;
 }

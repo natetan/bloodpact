@@ -45,39 +45,37 @@ export class SignUpView extends Component {
     return (
       <Container id='sign-up-container'>
         {this.props.errorMessage && <Alert color='danger'>{this.props.errorMessage}</Alert>}
-        <Form>
+        <Row id="sign-up-title">Create Free Account</Row>
+        <Form id="form">
           <Row form>
             <Col md={6}>
               <FormGroup>
-                <Label for='firstName'>First Name</Label>
-                <Input onInput={this.handleInput} type='text' name='firstName' id='firstName' placeholder='first name' />
+                <Input onInput={this.handleInput} type='text' name='firstName' id='firstName' placeholder='First name' />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label for='lastName'>Last Name</Label>
-                <Input onInput={this.handleInput} type='text' name='lastName' id='lastName' placeholder='last name' />
+                <Input onInput={this.handleInput} type='text' name='lastName' id='lastName' placeholder='Last name' />
               </FormGroup>
             </Col>
           </Row>
           <FormGroup>
-            <Label for='birthdate'>Birthdate</Label>
-            <Input onInput={this.handleInput} type='date' name='birthdate' id='birthdate' placeholder='birthdate'
+            <Label for='birthdate'>Date of birth</Label>
+            <Input onInput={this.handleInput} type='date' name='birthdate' id='birthdate' placeholder='Birthday'
             />
           </FormGroup>
           <FormGroup>
-            <Label for='email'>Email</Label>
-            <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='email' />
+            <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='Email' />
           </FormGroup>
           <FormGroup>
-            <Label for='password'>Password</Label>
-            <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='password' />
+            <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='Password' />
           </FormGroup>
           <FormGroup>
-            <Label for='password-confirm'>Confirm Password</Label>
             <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='Confirm password' />
           </FormGroup>
-          <Button onClick={this.handleSignUp}>Sign up</Button>
+          <Row id="button-row">
+            <Button className="btn btn-danger" id="sign-up-button" onClick={this.handleSignUp}>SIGN UP</Button>
+          </Row>
         </Form>
       </Container>
     );

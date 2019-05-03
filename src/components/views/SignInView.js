@@ -35,18 +35,19 @@ export class SignInView extends Component {
 
   render() {
     return (
-      <Container id='sign-up-container'>
+      <Container id='sign-in-container'>
         {this.props.errorMessage && <Alert color='danger'>{this.props.errorMessage}</Alert>}
+        <Row id="sign-in-title">Log In</Row>
         <Form>
           <FormGroup>
-            <Label for='email'>Email</Label>
             <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='email' />
           </FormGroup>
           <FormGroup>
-            <Label for='password'>Password</Label>
             <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='password' />
           </FormGroup>
-          <Button onClick={this.handleSignIn}>Log In</Button>
+          <Row id="button-row">
+            <Button id="sign-in-button" onClick={this.handleSignIn}>LOG IN</Button>
+          </Row>
         </Form>
       </Container>
     );
