@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
-import {Container, Row, Col, NavLink} from 'reactstrap';
-
+import React, { Component, bgColors } from "react";
+import { Container, Row, Col, NavLink } from "reactstrap";
+import "./BloodPactFooter.css";
 export class BloodPactFooter extends Component {
-  render() {
-    return (
-      <Container>
-        <footer className='pt-4 my-md-5 pt-md-5 border-top'>
-          <Row>
+	render() {
+		return (
+			<Container>
+				<footer>
+					{/* className="pt-4 my-md-5 pt-md-5 border-top" */}
+					<small className="d-block mb-3 text-muted">© BloodPact 2019</small>
+					{/* <Row>
             <Col md='3'>
               <img className='mb-2' src='https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg' alt='logo' width='24' height='24' />
               <small className='d-block mb-3 text-muted'>© BloodPact 2019</small>
@@ -40,9 +42,9 @@ export class BloodPactFooter extends Component {
                 <li><a target='_blank' className='text-muted' href='#'>Terms</a></li>
               </ul>
             </Col>
-          </Row>
-        </footer>
-      </Container>
-    )
-  }
+          </Row> */}
+				</footer>
+			</Container>
+		);
+	}
 }
