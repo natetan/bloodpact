@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
+import firebase from 'firebase/app';
 import './App.css';
 import { MainNavBar } from './components/navs/MainNavBar'
 import { HomeView } from './components/views/HomeView';
 import { SignUpView } from './components/views/SignUpView';
 import { SignInView } from './components/views/SignInView';
 import { BloodPactFooter } from './components/footers/BloodPactFooter';
-import firebase from 'firebase/app';
+import { DashboardView } from './components/views/DashboardView';
 
 class App extends Component {
   constructor(props) {
@@ -105,11 +106,18 @@ class App extends Component {
       nav = <MainNavBar />;
     }
 
+    let mainView = (routerProps) => {
+      if (this.state.user) {
+        return <DashboardView {...routerProps} tab={1} />;
+      } else {
+        return <HomeView {...routerProps} />;
+      }
+    }
     return (
       <div className='App'>
         {nav}
         <Switch>
-          <Route exact path={'/'} component={HomeView} />
+          <Route exact path={'/'} render={mainView} />
           <Route path='/signup/' render={signUpView} />
           <Route path='/signin/' render={signInView} />
           <Redirect to={'/'} />
