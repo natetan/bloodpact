@@ -50,13 +50,11 @@ export class SignUpView extends Component {
           <Row form>
             <Col md={6}>
               <FormGroup>
-                {/*<Label for='firstName'>First Name</Label>*/}
                 <Input onInput={this.handleInput} type='text' name='firstName' id='firstName' placeholder='First name' />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                {/*<Label for='lastName'>Last Name</Label>*/}
                 <Input onInput={this.handleInput} type='text' name='lastName' id='lastName' placeholder='Last name' />
               </FormGroup>
             </Col>
@@ -67,15 +65,12 @@ export class SignUpView extends Component {
             />
           </FormGroup>
           <FormGroup>
-            {/*<Label for='email'>Email</Label>*/}
             <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='Email' />
           </FormGroup>
           <FormGroup>
-            {/*<Label for='password'>Password</Label>*/}
             <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='Password' />
           </FormGroup>
           <FormGroup>
-            {/*<Label for='password-confirm'>Confirm Password</Label>*/}
             <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='Confirm password' />
           </FormGroup>
           <Row id="button-row">
