@@ -51,32 +51,32 @@ export class SignUpView extends Component {
             <Col md={6}>
               <FormGroup>
                 {/*<Label for='firstName'>First Name</Label>*/}
-                <Input onInput={this.handleInput} type='text' name='firstName' id='firstName' placeholder='first name' />
+                <Input onInput={this.handleInput} type='text' name='firstName' id='firstName' placeholder='First name' />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 {/*<Label for='lastName'>Last Name</Label>*/}
-                <Input onInput={this.handleInput} type='text' name='lastName' id='lastName' placeholder='last name' />
+                <Input onInput={this.handleInput} type='text' name='lastName' id='lastName' placeholder='Last name' />
               </FormGroup>
             </Col>
           </Row>
           <FormGroup>
             <Label for='birthdate'>Date of birth</Label>
-            <Input onInput={this.handleInput} type='date' name='birthdate' id='birthdate' placeholder='birthdate'
+            <Input onInput={this.handleInput} type='date' name='birthdate' id='birthdate' placeholder='Birthday'
             />
           </FormGroup>
           <FormGroup>
             {/*<Label for='email'>Email</Label>*/}
-            <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='email' />
+            <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='Email' />
           </FormGroup>
           <FormGroup>
             {/*<Label for='password'>Password</Label>*/}
-            <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='password' />
+            <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='Password' />
           </FormGroup>
           <FormGroup>
             {/*<Label for='password-confirm'>Confirm Password</Label>*/}
-            <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='confirm password' />
+            <Input onInput={this.handleInput} type='password' name='passwordConfirmation' id='password-confirm' placeholder='Confirm password' />
           </FormGroup>
           <Row id="button-row">
             <Button className="btn btn-danger" id="sign-up-button" onClick={this.handleSignUp}>SIGN UP</Button>

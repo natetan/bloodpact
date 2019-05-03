@@ -40,11 +40,11 @@ export class SignInView extends Component {
         <Row id="sign-in-title">Log In</Row>
         <Form>
           <FormGroup>
-            <Label for='email'>Email</Label>
+            {/*<Label for='email'>Email</Label>*/}
             <Input onInput={this.handleInput} type='email' name='email' id='email' placeholder='email' />
           </FormGroup>
           <FormGroup>
-            <Label for='password'>Password</Label>
+            {/*<Label for='password'>Password</Label>*/}
             <Input onInput={this.handleInput} type='password' name='password' id='password' placeholder='password' />
           </FormGroup>
           <Row id="button-row">
