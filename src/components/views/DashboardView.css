@@ -1,6 +1,14 @@
+.dashboard {
+  padding: 1%;
+}
+
 .dash-left-pane {
   background: #f9423a;
   text-align: center;
+  border-radius: 5px;
+}
+.dash-left-pane-list {
+  margin-top: 3%;
 }
 
 .isActive {
@@ -16,4 +24,8 @@
   color: #f9423a;
   background: white;
   cursor: pointer;
+}
+
+.sub-text {
+  color: #f9423a;
 }

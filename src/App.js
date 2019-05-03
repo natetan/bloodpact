@@ -13,7 +13,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errorMessage: null
+      errorMessage: null,
+      tab: 1
     }
   }
 
@@ -85,6 +86,10 @@ class App extends Component {
       })
   }
 
+  switchTabs = (tab) => {
+    this.setState({ tab: tab });
+  }
+
   render() {
     let signUpView = (routerProps) => {
       return (
@@ -108,7 +113,7 @@ class App extends Component {
 
     let mainView = (routerProps) => {
       if (this.state.user) {
-        return <DashboardView {...routerProps} tab={1} />;
+        return <DashboardView {...routerProps} tab={this.state.tab} switchTabs={this.switchTabs} displayName={this.state.user.displayName} />;
       } else {
         return <HomeView {...routerProps} />;
       }
