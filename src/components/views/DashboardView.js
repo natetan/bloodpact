@@ -23,19 +23,19 @@ export class DashboardView extends Component {
             <Container>
               <Nav pills vertical className='dash-left-pane-list'>
                 <NavItem>
-                  <NavLink id='1' className={this.props.tab == 1 ? 'isActive' : ''} onClick={this.switchTabs}>Personal Statistics</NavLink>
+                  <NavLink id='1' className={this.props.tab == 1 ? 'isActive' : 'dash-nav-item'} onClick={this.switchTabs}>Personal Statistics</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink id='2' className={this.props.tab == 2 ? 'isActive' : ''} onClick={this.switchTabs}>Find Locations</NavLink>
+                  <NavLink id='2' className={this.props.tab == 2 ? 'isActive' : 'dash-nav-item'} onClick={this.switchTabs}>Find Locations</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink id='3' className={this.props.tab == 3 ? 'isActive' : ''} onClick={this.switchTabs}>Groups</NavLink>
+                  <NavLink id='3' className={this.props.tab == 3 ? 'isActive' : 'dash-nav-item'} onClick={this.switchTabs}>Groups</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink id='4' className={this.props.tab == 4 ? 'isActive' : ''} onClick={this.switchTabs}>Rewards</NavLink>
+                  <NavLink id='4' className={this.props.tab == 4 ? 'isActive' : 'dash-nav-item'} onClick={this.switchTabs}>Rewards</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink id='5' className={this.props.tab == 5 ? 'isActive' : ''} onClick={this.switchTabs}>FAQ</NavLink>
+                  <NavLink id='5' className={this.props.tab == 5 ? 'isActive' : 'dash-nav-item'} onClick={this.switchTabs}>FAQ</NavLink>
                 </NavItem>
               </Nav>
             </Container>
