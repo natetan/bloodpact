@@ -1,19 +1,22 @@
 .featurette {
-  margin-top: 150px;
+	margin-top: 150px;
 }
 
-.featurette-heading-right {
-  text-align: right;
+.featurette-heading-right,
+h3.featurette-heading {
+	color: red;
 }
 
-h3, h1, .lead {
-  color: white;
-}
-
-.teamList {
-  background-color: black
+.lead,
+h3.featurette-heading-title,
+h1.featurette-heading-title {
+	color: white;
 }
 
 .lastPerson {
-  margin-bottom: 50px;
+	margin-bottom: 50px;
+}
+
+h3 {
+	display: inline;
 }

@@ -97,7 +97,7 @@ export class MainNavBar extends Component {
 								</Link>
 							</NavItem>
 							<NavItem>
-								<Link className="nav-links nav-link" to="/help">
+								<Link className="nav-links nav-link" to="/signin">
 									Log In
 								</Link>
 							</NavItem>

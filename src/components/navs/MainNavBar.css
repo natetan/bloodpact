@@ -3,7 +3,7 @@
 }
 
 .nav-links {
-  color: #000000;
+  color: lightgray;
 }
 
 .links:hover, .nav-links:hover {
@@ -13,4 +13,3 @@
 .links, .links:hover, .nav-links, .nav-links:hover {
   text-decoration: none;
 }
-

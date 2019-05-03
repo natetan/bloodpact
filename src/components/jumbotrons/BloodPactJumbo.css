@@ -1,15 +1,42 @@
 #jumbo {
-  text-align: center;
+	text-align: center;
 }
 
 .jumbo {
-  background: url("../../img/landingPage/landingPageImg.png") no-repeat fixed center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 820px;
-  text-align: center;
+	background: url("../../img/landingPage/landingPageImg.png") no-repeat fixed
+		center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 820px;
+	text-align: center;
 }
 
-.display-4 {
-  padding-top: 4em;
+p.lead {
+	font-size: 1.875em;
+}
+
+h1.display-4 {
+	position: reltaive;
+	font-size: 4.5em;
+	margin-top: 3em;
+	color: white;
+}
+
+.scrollDown {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 5%;
+	position: relative;
+	top: -50px;
+	color: white;
+}
+
+.nav-links {
+	color: lightgray;
+}
+
+#donor-button {
+	color: white;
+	text-decoration: none;
 }
