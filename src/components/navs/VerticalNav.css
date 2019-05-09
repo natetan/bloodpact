@@ -1,0 +1,14 @@
+.isActive {
+  background: white;
+  color: #f9423a !important;
+}
+
+.nav-item {
+  color: white;
+}
+
+.nav-item:hover {
+  color: #f9423a;
+  background: white;
+  cursor: pointer;
+}
