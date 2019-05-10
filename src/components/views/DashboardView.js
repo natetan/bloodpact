@@ -16,6 +16,25 @@ export class DashboardView extends Component {
   }
 
   render() {
+    let contentToShow;
+    switch (this.props.tab) {
+      case 1: // dash
+        contentToShow = <div></div>;
+        break;
+      case 2: // map
+        contentToShow = <div></div>;
+        break;
+      case 3: // groups
+        contentToShow = <div></div>;
+        break;
+      case 4: // rewards
+        contentToShow = <div></div>;
+        break;
+      default: // faq
+        contentToShow = <div></div>;
+        break;
+    }
+
     return (
       <div className='dashboard'>
         <Row>
