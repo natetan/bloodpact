@@ -46,8 +46,6 @@ export class MainViz extends React.Component {
               color: '#C2C5C7',
               showgrid: false,
               autosize: false,
-              //width: 8000,
-              //height: 500,
             },
             yaxis: {
               range: [0, 33],
@@ -68,17 +66,20 @@ export class MainViz extends React.Component {
               },
               "orientation": "h",
             },
-            plot_bgcolor:"#0E1A1F",
+            plot_bgcolor:"#0E1A1F", 
             paper_bgcolor:"#0E1A1F",
             font: {
               size: 18, 
               family: 'Aleo, sans-serif' 
             },
+            autosize: false,
+            width: 1100,
+            height: 370,
             margin: {
-              l: 10,
+              l: 0,
               r: 50,
-              b: 50,
-              t: 10,
+              b: 100,
+              t: 0,
               pad: 4
             },
           } 
