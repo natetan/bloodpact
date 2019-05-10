@@ -123,7 +123,7 @@ class App extends Component {
 
 		let nav;
 		if (this.state.user) {
-			console.log(this.state.user);
+			// console.log(this.state.user);
 			nav = (
 				<MainNavBar
 					displayName={this.state.user.displayName}
