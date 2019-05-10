@@ -1,8 +1,3 @@
-.dashboard {
-  /* padding-left: 10%;
-  padding-right: 10%; */
-}
-
 .dash-left-pane {
   background: #f9423a;
   text-align: center;
@@ -30,10 +25,6 @@
   background: white;
   cursor: pointer;
 }
-
-/*.sub-text {
-  color: #f9423a;
-}*/
 
 .dash-right-pane {
   background-color: white;

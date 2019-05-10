@@ -20,10 +20,7 @@ export class MainViz extends React.Component {
             type: 'scatter',
             mode: 'markers',
             marker: {color: '#0E1A1F', size: 1},
-            //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-            //textfont : { family:'Times New Roman'},
             showlegend: false,
-
           },
           {
             x: ["JAN", "APR", "SEP"],
@@ -31,9 +28,7 @@ export class MainViz extends React.Component {
             type: 'scatter',
             mode: 'markers',
             name: 'Your Donations',
-            marker: {color: 'red', size: 10},
-            //text: ['B-a', 'B-b', 'B-c', 'B-d', 'B-e'],
-            //textfont : { family:'Times New Roman'},
+            marker: {color: '#f9423a', size: 10},
           },
           {
             type: 'scatter', 
@@ -51,8 +46,8 @@ export class MainViz extends React.Component {
               color: '#C2C5C7',
               showgrid: false,
               autosize: false,
-              width: 8000,
-              height: 500,
+              //width: 8000,
+              //height: 500,
             },
             yaxis: {
               range: [0, 33],
@@ -78,7 +73,14 @@ export class MainViz extends React.Component {
             font: {
               size: 18, 
               family: 'Aleo, sans-serif' 
-            }
+            },
+            margin: {
+              l: 10,
+              r: 50,
+              b: 50,
+              t: 10,
+              pad: 4
+            },
           } 
         }
       />

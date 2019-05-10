@@ -19,7 +19,7 @@ export class StatisticsView extends Component {
         <div className="card-viz">
           <Container>
             <Row>
-              <Col md='4'>
+              <Col md='4' sm='12'>
                 <Card className="card">
                   <CardTitle className="card-title">Your Donations</CardTitle>
                   <img className="large-icon" width="60%" src={PintBloodLogo} alt="pint of blood icon" />
@@ -28,7 +28,7 @@ export class StatisticsView extends Component {
                   </CardBody>
                 </Card>
               </Col>
-              <Col md='4'>
+              <Col md='4' sm='12'>
                 <Card className="card">
                   <CardTitle className="card-title">Your Contribution</CardTitle>
                   <img className="large-icon" width="60%" src={HeartDonationLogo} alt="heart logo" />
@@ -37,10 +37,10 @@ export class StatisticsView extends Component {
                   </CardBody>
                 </Card>
               </Col>
-              <Col md='4'>
+              <Col md='4' sm='12'>
                 <Card className="card">
                   <CardTitle className="card-title">Your Goal</CardTitle>
-                  <GoalViz />
+                  <GoalViz id='goal-viz-box'/>
                   <CardBody>
                     <CardText className="card-stat">20 pints</CardText>
                   </CardBody>

@@ -15,26 +15,52 @@ export class GoalViz extends React.Component {
       <Plot id="goal-viz"
         data = {[
           {
-            values: [25, 75],
-            //labels: ['donated', 'remaining' ],
-            //domain: {column: 0},
-            //name: 'GHG Emissions',
-            //hoverinfo: 'label+percent',
-            hole: .8,
+            values: [10, 30],
+            hole: .9,
             type: 'pie',
             marker: {
               colors: ['#f9423a ', '#E5E5E5']
             },
+            textinfo: 'none',
+            rotation: 90,
           }
         ]}   
         layout = { 
           {
-            height: 300,
-            width: 300,
+            annotations: [
+              {
+                font: {
+                  size: 44,
+                  color: '#F9423A',
+                  family: 'Aleo, sans-serif' 
+                },
+                showarrow: false,
+                text: '<b>25%</b>',
+                x: 0.5,
+                y: 0.5,
+              }
+            ],
             showlegend: false,
-            grid: {rows: 1, columns: 1}
-          }
+            grid: {rows: 1, columns: 1},
+            /*autosize: true,
+            useResizeHandler: true,*/
+            autosize: false,
+            width: 200,
+            height: 200,
+            margin: {
+              l: 0,
+              r: 0,
+              b: 0,
+              t: 0,
+              pad: 4
+            },
+          }     
         }
+  
+        //{[{responsive: true}]}
+        //{staticPlot: true}
+        //{displayModeBar: false}
+        //{displaylogo: false}
       />
     );
   }
