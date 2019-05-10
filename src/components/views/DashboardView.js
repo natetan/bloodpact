@@ -9,15 +9,36 @@ import LocationLogo from "../../img/left-panel/Location.png";
 import MedalLogo from "../../img/left-panel/medal.png";
 import QuestionMarkLogo from "../../img/left-panel/question-mark.png";
 import { StatisticsView } from './StatisticsView/StatisticsView';
+import { SearchView } from './SearchView/SearchView';
+import { getDrives } from '../../services/CapstoneApi';
 
 export class DashboardView extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loading: false,
+      drives: [],
+      zipcode: ''
+    };
   }
-
-
   switchTabs = (event) => {
     this.props.switchTabs(event.target.id);
+  }
+
+  handleZipcodeInput = (code) => {
+    this.setState({ zipcode: code });
+  }
+
+  handleSearch = (zipcode) => {
+    this.setState({
+      loading: true,
+      drives: []
+    });
+    getDrives(zipcode).then((data) => {
+      this.setState({ drives: data });
+    }).then(() => {
+      this.setState({ loading: false });
+    })
   }
 
   render() {
@@ -28,7 +49,7 @@ export class DashboardView extends Component {
         content = <StatisticsView />;
         break;
       case 2:
-        content = <div>{'Not implemented'}</div>
+        content = <SearchView drives={this.state.drives} loading={this.state.loading} handleSearch={this.handleSearch} zipcode={this.state.zipcode} handleZipcodeInput={this.handleZipcodeInput} />
         break;
       case 3:
         content = <div>{'Not implemented'}</div>
@@ -54,12 +75,12 @@ export class DashboardView extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink id='2' className={this.props.tab == 2 ? 'isActive' : 'dash-nav-item'} onClick={this.switchTabs}>
-                    <img className="nav-icon" width="10%" src={GroupsLogo} alt="community icon" />Find Locations
+                    <img className="nav-icon" width="10%" src={LocationLogo} alt="location icon" />Find Locations
                   </NavLink>
                 </NavItem>
                 <NavItem>
                   <NavLink id='3' className={this.props.tab == 3 ? 'isActive' : 'dash-nav-item'} onClick={this.switchTabs}>
-                    <img className="nav-icon" width="10%" src={LocationLogo} alt="location icon" />Groups
+                    <img className="nav-icon" width="10%" src={GroupsLogo} alt="community icon" />Groups
                   </NavLink>
                 </NavItem>
                 <NavItem>
