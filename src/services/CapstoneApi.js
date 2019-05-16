@@ -1,6 +1,7 @@
 import fetch from 'node-fetch'
 
 const baseUrl = 'https://infocapstone2019-server.herokuapp.com';
+//const baseUrl = 'http://localhost:5000';
 
 export async function getDrives(zipcode) {
   let res = await fetch(`${baseUrl}/drives/${zipcode}`);
@@ -17,7 +18,7 @@ export async function getGroup(groupName) {
   return res.json();
 }
 
-export function getUserGroups(uid) {
+export async function getUserGroups(uid) {
   let res = await fetch(`${baseUrl}/users/${uid}/groups`);
   return res.json();
 }
@@ -28,14 +29,19 @@ export async function createGroup(name, uid, firstName, lastName, pintsDonated =
     firstName: firstName,
     lastName: lastName
   };
+  let body = {
+    name: name,
+    friendlyName: name.toLowerCase().split(' ').join('-'),
+    createdDate: new Date().toISOString().substring(0, 10),
+    members: members,
+    pintsDonated: pintsDonated
+  }
   let options = {
     method: 'POST',
-    body: {
-      name: name,
-      friendlyName: name.toLowerCase().split(' ').join('-'),
-      createdDate: new Date().toISOString().substring(0, 10),
-      members: members,
-      pintsDonated: pintsDonated
+    body: JSON.stringify(body),
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json'
     }
   };
 
@@ -43,13 +49,18 @@ export async function createGroup(name, uid, firstName, lastName, pintsDonated =
   return res.json();
 }
 
-export function joinGroup(groupName, uid, firstName, lastName) {
+export async function joinGroup(groupName, uid, firstName, lastName) {
+  let body = {
+    uid: uid,
+    firstName: firstName,
+    lastName: lastName,
+  }
   let options = {
     method: 'PUT',
-    body: {
-      uid: uid,
-      firstName: firstName,
-      lastName: lastName,
+    body: JSON.stringify(body),
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json'
     }
   };
   let res = await fetch(`${baseUrl}/groups/${groupName}/join`, options);
