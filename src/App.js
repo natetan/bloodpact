@@ -52,7 +52,11 @@ class App extends Component {
 						firstName: user.firstName,
 						lastName: user.lastName,
 						birthdate: user.birthdate,
-						email: user.email
+						email: user.email,
+						pintsDonated: 0,
+						donationGoal: 10,
+						donations: ['2019-01-01', '2019-03-03', '2019-05-05'],
+						nextEligibleDate: '2019-06-30'
 					});
 					fbUser
 						.updateProfile({
