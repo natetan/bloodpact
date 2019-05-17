@@ -12,6 +12,8 @@ import './main-viz.css';
 export class MainViz extends React.Component {
   render() {
 
+    console.log(this.props.userStats);
+
     var months_donated = ["JAN", "MAR", "MAY"];
     var days_donated = [10, 20, 30];
     var month_elegible = ["JUL"];

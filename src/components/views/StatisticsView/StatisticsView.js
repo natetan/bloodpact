@@ -11,10 +11,11 @@ import './StatisticsView.css'
 
 export class StatisticsView extends Component {
   render() {
+    console.log(this.props.userStats);
     return (
       <React.Fragment>
         <div className="main-viz">
-          <MainViz />
+          <MainViz userStats={this.props.userStats}/>
         </div>
         <div className="card-viz">
           <Container>
@@ -40,7 +41,7 @@ export class StatisticsView extends Component {
               <Col md='4' sm='12'>
                 <Card className="card">
                   <CardTitle className="card-title">Your Goal</CardTitle>
-                  <GoalViz id='goal-viz-box'/>
+                  <GoalViz id='goal-viz-box' user={this.props.userStats}/>
                   <CardBody>
                     <CardText className="card-stat">20 pints</CardText>
                   </CardBody>
