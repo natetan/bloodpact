@@ -3,6 +3,11 @@ import fetch from 'node-fetch'
 const baseUrl = 'https://infocapstone2019-server.herokuapp.com';
 //const baseUrl = 'http://localhost:5000';
 
+export async function getUserStats(uid) {
+  let res = await fetch(`${baseUrl}/users/${uid}/stats`);
+  return res.json();
+}
+
 export async function getDrives(zipcode) {
   let res = await fetch(`${baseUrl}/drives/${zipcode}`);
   return res.json();
