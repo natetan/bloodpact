@@ -11,6 +11,13 @@ import './main-viz.css';
 
 export class MainViz extends React.Component {
   render() {
+
+    var months_donated = ["JAN", "MAR", "MAY"];
+    var days_donated = [10, 20, 30];
+    var month_elegible = ["JUL"];
+    var day_elegible = [23];
+
+
     return (
       <Plot id="main-viz"
         data={[
@@ -23,8 +30,8 @@ export class MainViz extends React.Component {
             showlegend: false,
           },
           {
-            x: ["JAN", "APR", "SEP"],
-            y: [25, 10, 31],
+            x: months_donated,
+            y: days_donated,
             type: 'scatter',
             mode: 'markers',
             name: 'Your Donations',
@@ -34,8 +41,8 @@ export class MainViz extends React.Component {
             type: 'scatter', 
             mode: 'markers', 
             marker: {color: 'white', size: 10}, 
-            x: ["NOV"], 
-            y: [23],
+            x: month_elegible, 
+            y: day_elegible,
             name: 'Next Eligiblity'
           },
         ]}

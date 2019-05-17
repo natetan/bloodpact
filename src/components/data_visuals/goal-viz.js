@@ -6,23 +6,34 @@ import {
 } from 'reactstrap';
 import './goal-viz.css';
 //import { VerticalNav } from '../navs/VerticalNav';
+//import { getDrives } from './///'
 
 
 
 export class GoalViz extends React.Component {
+
   render() {
+
+
+    var test = [1, 20];
+    /* getDrives('98105').then((data) => {
+      console.log()
+      //this.setState.whatever = da
+    })*/
+
+
     return (
       <Plot id="goal-viz"
         data = {[
           {
-            values: [10, 30],
+            values: test,
             hole: .9,
             type: 'pie',
             marker: {
               colors: ['#f9423a ', '#E5E5E5']
             },
             textinfo: 'none',
-            rotation: 90,
+            rotation: (test[0]/(test[0]+test[1]) * 360),
           }
         ]}   
         layout = { 
