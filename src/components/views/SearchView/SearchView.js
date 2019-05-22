@@ -28,18 +28,20 @@ export class SearchView extends Component {
     } else {
       drives = this.props.drives.map((d) => {
         return (
-          <Col sm='12' md='6' lg='5' key={d.name}>
-            <Card className='mb-4'>
-              <CardHeader tag="h3">{d.name}</CardHeader>
-              <CardBody>
-                <CardTitle>{d.address}</CardTitle>
-                <CardText>{d.date}</CardText>
-                <CardText>{`Donation type: ${d.donationType}`}</CardText>
-                <Button color='danger'>Go somewhere</Button>
-              </CardBody>
-              <CardFooter className="text-muted">{d.distance}</CardFooter>
-            </Card>
-          </Col>
+          <div className='searchview-card'>
+            <Col sm='12' md='6' lg='5' key={d.name}>
+              <Card className='mb-4'>
+                <CardHeader tag="h3">{d.name}</CardHeader>
+                <CardBody>
+                  <CardTitle>{d.address}</CardTitle>
+                  <CardText>{d.date}</CardText>
+                  <CardText>{`Donation type: ${d.donationType}`}</CardText>
+                  <Button color='danger'>Go somewhere</Button>
+                </CardBody>
+                <CardFooter className="text-muted">{d.distance}</CardFooter>
+              </Card>
+            </Col>
+          </div>
         )
       });
     }

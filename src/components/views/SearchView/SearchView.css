@@ -66,6 +66,6 @@ input[type=number] {
   padding: 3%;
 }
 
-.card {
+.searchview-card .card {
   min-height: 500px;
 }
