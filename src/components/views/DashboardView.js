@@ -15,6 +15,7 @@ import { StatisticsView } from "./StatisticsView/StatisticsView";
 import { SearchView } from "./SearchView/SearchView";
 import { getDrives } from "../../services/CapstoneApi";
 import { GroupView } from "./GroupView/GroupView";
+import { RewardsView } from './RewardsView/RewardsView';
 
 export class DashboardView extends Component {
 	constructor(props) {
@@ -69,7 +70,7 @@ export class DashboardView extends Component {
 				content = <GroupView />;
 				break;
 			case 4:
-				content = <div>{"Not implemented"}</div>;
+				content = <RewardsView />;
 				break;
 			default:
 				content = <div>{"Not implemented"}</div>;
