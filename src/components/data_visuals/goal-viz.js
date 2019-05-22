@@ -5,8 +5,6 @@ import {
   CardTitle, CardSubtitle, Button, Row, Col, ListGroup, ListGroupItem, Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink
 } from 'reactstrap';
 import './goal-viz.css';
-//import { VerticalNav } from '../navs/VerticalNav';
-//import { getDrives } from './///'
 
 
 
@@ -14,26 +12,20 @@ export class GoalViz extends React.Component {
 
   render() {
 
-
-    var test = [1, 3];
-    /* getDrives('98105').then((data) => {
-      console.log()
-      //this.setState.whatever = da
-    })*/
-
+    var goalStats = [1, 3];
 
     return (
       <Plot id="goal-viz"
         data = {[
           {
-            values: test,
+            values: goalStats,
             hole: .9,
             type: 'pie',
             marker: {
               colors: ['#f9423a ', '#E5E5E5']
             },
             textinfo: 'none',
-            rotation: (test[0]/(test[0]+test[1]) * 360),
+            rotation: (goalStats[0]/(goalStats[0]+goalStats[1]) * 360),
           }
         ]}   
         layout = { 

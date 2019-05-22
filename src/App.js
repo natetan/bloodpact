@@ -23,7 +23,6 @@ class App extends Component {
 		this.authUnregFunc = firebase.auth().onAuthStateChanged(firebaseUser => {
 			// If user is logged in
 			if (firebaseUser) {
-				console.log("is this working");
 				this.setState({ user: firebaseUser });
 				getUserStats(this.state.user.uid).then((data) => {
 					this.setState({userStats:data});
@@ -47,12 +46,10 @@ class App extends Component {
 				.auth()
 				.createUserWithEmailAndPassword(user.email, user.password)
 				.then(userCredentials => {
-					console.log(userCredentials.user);
 					return userCredentials.user;
 				})
 				.then(fbUser => {
 					let userRef = firebase.database().ref(`people/${fbUser.uid}`);
-					console.log(user);
 					userRef.set({
 						firstName: user.firstName,
 						lastName: user.lastName,
@@ -133,7 +130,6 @@ class App extends Component {
 
 		let nav;
 		if (this.state.user) {
-			// console.log(this.state.user);
 			nav = (
 				<MainNavBar
 					displayName={this.state.user.displayName}
@@ -153,7 +149,6 @@ class App extends Component {
 					nextEligibleDate: this.state.user.nextEligibleDate,
 					pintsDonated: this.state.user.pintsDonated,
 				}
-				console.log(this.state.userStats);
 				return (
 					<DashboardView
 						{...routerProps}

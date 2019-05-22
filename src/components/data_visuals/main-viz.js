@@ -5,14 +5,11 @@ import {
   CardTitle, CardSubtitle, Button, Row, Col, ListGroup, ListGroupItem, Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink
 } from 'reactstrap';
 import './main-viz.css';
-//import { VerticalNav } from '../navs/VerticalNav';
 
 
 
 export class MainViz extends React.Component {
   render() {
-
-    console.log(this.props.userStats);
 
     var months_donated = ["JAN", "MAR", "MAY"];
     var days_donated = [10, 20, 30];

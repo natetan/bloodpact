@@ -11,7 +11,6 @@ import './StatisticsView.css'
 
 export class StatisticsView extends Component {
   render() {
-    console.log(this.props.userStats);
     return (
       <React.Fragment>
         <div className="main-viz">
