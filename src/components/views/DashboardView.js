@@ -53,7 +53,7 @@ export class DashboardView extends Component {
 
 		switch (Number(this.props.tab)) {
 			case 1:
-				content = <StatisticsView />;
+				content = <StatisticsView userStats={this.props.userStats}/>;
 				break;
 			case 2:
 				content = (

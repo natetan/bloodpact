@@ -5,9 +5,8 @@
 }
 
 .main-viz {
-  background-color: #0E191F;
+  background-color: #0E1A1F;
   height: 50vh;
-  color: blueviolet;
   padding-top: 3%;
   padding-left: 3%;
 }
@@ -20,6 +19,7 @@
 .card {
   box-shadow: 2px 2px 2px grey;
   padding: 0px !important;
+  font-family: 'Aleo', serif;
 
 }
 
@@ -42,6 +42,12 @@
 }
 
 .large-icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.js-plotly-plot {
   display: block;
   margin-left: auto;
   margin-right: auto;

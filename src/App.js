@@ -8,6 +8,7 @@ import { SignUpView } from "./components/views/SignUpView";
 import { SignInView } from "./components/views/SignInView";
 import { BloodPactFooter } from "./components/footers/BloodPactFooter";
 import { DashboardView } from "./components/views/DashboardView";
+import { getUserStats } from "./services/CapstoneApi.js"
 
 class App extends Component {
 	constructor(props) {
@@ -23,6 +24,9 @@ class App extends Component {
 			// If user is logged in
 			if (firebaseUser) {
 				this.setState({ user: firebaseUser });
+				getUserStats(this.state.user.uid).then((data) => {
+					this.setState({userStats:data});
+				})
 			} else {
 				this.setState({
 					firebaseUser: null,
@@ -42,12 +46,10 @@ class App extends Component {
 				.auth()
 				.createUserWithEmailAndPassword(user.email, user.password)
 				.then(userCredentials => {
-					console.log(userCredentials.user);
 					return userCredentials.user;
 				})
 				.then(fbUser => {
 					let userRef = firebase.database().ref(`people/${fbUser.uid}`);
-					console.log(user);
 					userRef.set({
 						firstName: user.firstName,
 						lastName: user.lastName,
@@ -105,6 +107,7 @@ class App extends Component {
 	};
 
 	render() {
+
 		let signUpView = routerProps => {
 			return (
 				<SignUpView
@@ -127,7 +130,6 @@ class App extends Component {
 
 		let nav;
 		if (this.state.user) {
-			// console.log(this.state.user);
 			nav = (
 				<MainNavBar
 					displayName={this.state.user.displayName}
@@ -140,13 +142,20 @@ class App extends Component {
 		}
 
 		let mainView = routerProps => {
-			if (this.state.user) {
+			if (this.state.userStats) {
+				let userStats = {
+					donationGoal: this.state.user.donationGoal,
+					donations: this.state.user.donations,
+					nextEligibleDate: this.state.user.nextEligibleDate,
+					pintsDonated: this.state.user.pintsDonated,
+				}
 				return (
 					<DashboardView
 						{...routerProps}
 						tab={this.state.tab}
 						switchTabs={this.switchTabs}
 						displayName={this.state.user.displayName}
+						userStats={this.state.userStats}
 					/>
 				);
 			} else {
