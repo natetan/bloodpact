@@ -15,7 +15,7 @@ export class GoalViz extends React.Component {
   render() {
 
 
-    var test = [1, 20];
+    var test = [1, 3];
     /* getDrives('98105').then((data) => {
       console.log()
       //this.setState.whatever = da
