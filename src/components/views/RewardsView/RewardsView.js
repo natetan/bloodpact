@@ -10,19 +10,19 @@ export class RewardsView extends Component {
         current: 5,
         goal: 15,
         show: true,
-        img: 'https://static.thenounproject.com/png/594650-200.png'
+        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
       },
       {
         current: 15,
         goal: 25,
         show: false,
-        img: 'https://static.thenounproject.com/png/594650-200.png'
+        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
       },
       {
         current: 25,
         goal: 35,
         show: false,
-        img: 'https://static.thenounproject.com/png/594650-200.png'
+        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
       }
     ];
 
@@ -32,8 +32,9 @@ export class RewardsView extends Component {
     return (
       <div className='rewards-page'>
         <div className='rewards-progress'>
-        <h1 className='rewards-tiers'>Tiers</h1>
-          {progress}
+        <h1 className='rewards-titles'>Tiers</h1>
+        {progress}
+        <h1 className='rewards-titles'>Rewards</h1>
         </div>
       </div>
     )
