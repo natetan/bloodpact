@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Col, Row } from "reactstrap";
-import { Person } from "./SinglePerson";
+import { Person } from "./Person";
 import "./Team.css";
 import Madison from "../../img/teamPics/madison.png";
 import Phillip from "../../img/teamPics/phillip.jpeg";
@@ -16,22 +16,11 @@ export class Team extends Component {
 						<h1 className="featurette-heading-title">
 							{this.props.description}
 						</h1>
-						<Person
-							person="Yulong Tan"
-							role="Project Manager & Developer"
-							img={Yulong}
+						<Person person="Yulong Tan" projectRole="Project Manager & Developer" img={Yulong} />
+						<Person person="Phillip Park" projectRole="Developer" img={Phillip} />
+						<Person person="Madison Smith" projectRole="Researcher & Developer" img={Madison}
 						/>
-						<Person person="Phillip Park" role="Developer" img={Phillip} />
-						<Person
-							person="Madison Smith"
-							role="Researcher & Developer"
-							img={Madison}
-						/>
-						<Person
-							className="lastPerson"
-							person="Varun Mehra"
-							role="Designer"
-							img={Varun}
+						<Person className="lastPerson" person="Varun Mehra" projectRole="Designer" img={Varun}
 						/>
 					</Col>
 					<Col sm="6" className="right-section">

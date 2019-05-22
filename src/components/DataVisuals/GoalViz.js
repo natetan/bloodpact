@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import Plot from 'react-plotly.js';
-import {
-  Container, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Row, Col, ListGroup, ListGroupItem, Nav, NavItem, Dropdown, DropdownItem, DropdownToggle, DropdownMenu, NavLink
-} from 'reactstrap';
-import './goal-viz.css';
+import './GoalViz.css';
 
-
-
-export class GoalViz extends React.Component {
-
+export class GoalViz extends Component {
   render() {
-
-    var goalStats = [1, 3];
-
+    let goalStats = [1, 3];
     return (
       <Plot id="goal-viz"
-        data = {[
+        data={[
           {
             values: goalStats,
             hole: .9,
@@ -25,17 +16,17 @@ export class GoalViz extends React.Component {
               colors: ['#f9423a ', '#E5E5E5']
             },
             textinfo: 'none',
-            rotation: (goalStats[0]/(goalStats[0]+goalStats[1]) * 360),
+            rotation: (goalStats[0] / (goalStats[0] + goalStats[1]) * 360),
           }
-        ]}   
-        layout = { 
+        ]}
+        layout={
           {
             annotations: [
               {
                 font: {
                   size: 44,
                   color: '#F9423A',
-                  family: 'Aleo, sans-serif' 
+                  family: 'Aleo, sans-serif'
                 },
                 showarrow: false,
                 text: '<b>25%</b>',
@@ -44,9 +35,7 @@ export class GoalViz extends React.Component {
               }
             ],
             showlegend: false,
-            grid: {rows: 1, columns: 1},
-            /*autosize: true,
-            useResizeHandler: true,*/
+            grid: { rows: 1, columns: 1 },
             autosize: false,
             width: 200,
             height: 200,
@@ -57,13 +46,8 @@ export class GoalViz extends React.Component {
               t: 0,
               pad: 4
             },
-          }     
+          }
         }
-  
-        //{[{responsive: true}]}
-        //{staticPlot: true}
-        //{displayModeBar: false}
-        //{displaylogo: false}
       />
     );
   }

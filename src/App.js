@@ -25,7 +25,7 @@ class App extends Component {
 			if (firebaseUser) {
 				this.setState({ user: firebaseUser });
 				getUserStats(this.state.user.uid).then((data) => {
-					this.setState({userStats:data});
+					this.setState({ userStats: data });
 				})
 			} else {
 				this.setState({
@@ -143,12 +143,6 @@ class App extends Component {
 
 		let mainView = routerProps => {
 			if (this.state.userStats) {
-				let userStats = {
-					donationGoal: this.state.user.donationGoal,
-					donations: this.state.user.donations,
-					nextEligibleDate: this.state.user.nextEligibleDate,
-					pintsDonated: this.state.user.pintsDonated,
-				}
 				return (
 					<DashboardView
 						{...routerProps}

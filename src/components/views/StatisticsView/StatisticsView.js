@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Plot from 'react-plotly.js';
 import {
   Container, Card, CardText, CardBody, CardTitle, Row, Col
 } from 'reactstrap';
 import PintBloodLogo from "../../../img/dashboard/Pint.png";
 import HeartDonationLogo from "../../../img/dashboard/Heart-Donation.png";
-import { MainViz } from "../../data_visuals/main-viz.js";
-import { GoalViz } from "../../data_visuals/goal-viz.js";
+import { MainViz } from "../../DataVisuals/MainViz";
+import { GoalViz } from "../../DataVisuals/GoalViz";
 import './StatisticsView.css'
 
 export class StatisticsView extends Component {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Card, CardImg, CardHeader, CardFooter, CardBody,
-  CardTitle, CardText
+  Card, CardImg, CardHeader, CardBody
 } from 'reactstrap';
 import './RewardItem.css';
 

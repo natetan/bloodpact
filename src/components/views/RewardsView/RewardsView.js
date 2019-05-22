@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Progress, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import './RewardsView.css';
 import { DonationProgress } from './DonationProgress/DonationProgress';
 import { RewardItem } from './RewardItem/RewardItem';
@@ -48,8 +48,8 @@ export class RewardsView extends Component {
 
     let rewards = rewardData.map((item, index) => {
       return (
-        <Col md='4'>
-          <RewardItem key={index} title={item.title} img={item.img} />
+        <Col key={index} md='4'>
+          <RewardItem title={item.title} img={item.img} />
         </Col>
       )
     })
