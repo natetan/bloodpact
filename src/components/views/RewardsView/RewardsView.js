@@ -3,6 +3,12 @@ import { Row, Col } from 'reactstrap';
 import './RewardsView.css';
 import { DonationProgress } from './DonationProgress/DonationProgress';
 import { RewardItem } from './RewardItem/RewardItem';
+import Rank1 from '../../../img/rewards/rank1.png';
+import Rank2 from '../../../img/rewards/rank2.png';
+import Rank3 from '../../../img/rewards/rank3.png';
+import Bag from '../../../img/rewards/bag.png';
+import Tshirt from '../../../img/rewards/tshirt.png';
+import Money from '../../../img/rewards/money.png';
 
 export class RewardsView extends Component {
   render() {
@@ -11,19 +17,19 @@ export class RewardsView extends Component {
         current: 5,
         goal: 15,
         show: true,
-        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
+        img: Rank1
       },
       {
         current: 15,
         goal: 25,
         show: false,
-        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
+        img: Rank2
       },
       {
         current: 25,
         goal: 35,
         show: false,
-        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
+        img: Rank3
       }
     ];
 
@@ -34,15 +40,15 @@ export class RewardsView extends Component {
     let rewardData = [
       {
         title: 'Rank 2',
-        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
+        img: Bag
       },
       {
         title: 'Rank 3',
-        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
+        img: Tshirt
       },
       {
         title: 'Rank 4',
-        img: 'https://cdn3.iconfinder.com/data/icons/vote-and-rewards/48/12-512.png'
+        img: Money
       }
     ]
 

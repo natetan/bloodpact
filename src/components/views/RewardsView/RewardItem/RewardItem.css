@@ -1,3 +1,7 @@
 .reward-item {
   margin-bottom: 5rem;
 }
+
+.reward-item .card {
+  min-height: 450px;
+}
