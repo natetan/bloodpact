@@ -140,7 +140,11 @@ export class MyGroups extends Component {
 										</div>
 									</ListGroupItem>
 								</ListGroup>
-								<GroupsPlot/>
+								<div id="groups-plot-container">
+									<div id="group-plot-title">Goal</div>
+									<GroupsPlot id="test"/>
+									<div id="group-plot-stat">200 Pints</div>
+								</div>
 							</CardBody>
 						</Card>
 					</Col>
