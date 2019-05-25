@@ -1,0 +1,19 @@
+.faq-item:hover {
+  cursor: pointer;
+}
+
+.faq-item .text:hover {
+  text-decoration: underline;
+}
+
+.faq-item hr {
+  border-color: white;
+}
+
+.faq-item .icon {
+  float: right;
+}
+
+.faq-item .collapse > div {
+  margin-top: 1rem;
+}
