@@ -106,6 +106,7 @@ export class JoinGroup extends Component {
 									Varun M. <Badge pill>1 Pints</Badge>
 								</ListGroupItem>
 							</ListGroup>
+		
 						</CardBody>
 					</Card>
 				</Row>
