@@ -25,7 +25,7 @@ export class GroupsPlot extends Component {
                 annotations: [
                 {
                     font: {
-                    size: 44,
+                    size: 52,
                     color: '#F9423A',
                     family: 'Aleo, sans-serif'
                     },
