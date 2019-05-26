@@ -20,6 +20,7 @@ import {
 import "./MyGroups.css";
 import picture from "../../../img/logos/blood-pact-logo.png";
 import pie from "../../../img/left-panel/pie-chart.png";
+import {GroupsPlot} from "./GroupsPlot.js"
 
 export class MyGroups extends Component {
 	handleClick = e => {
@@ -139,6 +140,11 @@ export class MyGroups extends Component {
 										</div>
 									</ListGroupItem>
 								</ListGroup>
+								<div id="groups-plot-container">
+									<div id="group-plot-title">Goal</div>
+									<GroupsPlot id="test"/>
+									<div id="group-plot-stat">200 Pints</div>
+								</div>
 							</CardBody>
 						</Card>
 					</Col>
