@@ -66,7 +66,14 @@ export class DashboardView extends Component {
 				);
 				break;
 			case 3:
-				content = <GroupView />;
+				content = (
+					<GroupView
+						uid={this.props.uid}
+						user={this.props.user}
+						firstName={this.props.firstName}
+						lastName={this.props.lastName}
+					/>
+				);
 				break;
 			case 4:
 				content = <div>{"Not implemented"}</div>;

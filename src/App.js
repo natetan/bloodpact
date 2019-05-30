@@ -101,6 +101,7 @@ class App extends Component {
 	};
 
 	render() {
+		console.log(this.state.user);
 		let signUpView = routerProps => {
 			return (
 				<SignUpView
@@ -123,7 +124,6 @@ class App extends Component {
 
 		let nav;
 		if (this.state.user) {
-			// console.log(this.state.user);
 			nav = (
 				<MainNavBar
 					displayName={this.state.user.displayName}
@@ -143,6 +143,9 @@ class App extends Component {
 						tab={this.state.tab}
 						switchTabs={this.switchTabs}
 						displayName={this.state.user.displayName}
+						uid={this.state.user.uid}
+						firstName={this.state.user.firstName}
+						lastName={this.state.user.lastName}
 					/>
 				);
 			} else {

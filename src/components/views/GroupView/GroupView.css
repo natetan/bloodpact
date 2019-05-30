@@ -1,11 +1,34 @@
 .group {
-  background-color: black;
+  background-color: #0F1A20;
+  padding-left: 30px;
+  font-family: 'Aleo', serif;
 }
 
-/* .nav-item {
-  background-color: red;
-} */
+.group .groupHeader {
+  color: white;
+  padding-left: 1rem;
+  padding-top: 30px;
+}
 
-.group.nav-item {
-  background-color: red;
+.group .group-tabs {
+  padding-left: 1rem;
+  border: none;
+  padding-top: 50px;
+}
+
+.group .tabs {
+  margin-right: 10px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.group .nav-item {
+  background-color: white;
+  color: red;
+}
+
+.group .active.nav-link {
+  background-color: red !important;
+  color: white !important;
+  border-radius: 20px;
 }

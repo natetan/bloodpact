@@ -18,12 +18,55 @@ import {
 	ButtonGroup
 } from "reactstrap";
 import "./MyGroups.css";
-import picture from "../../../img/logos/blood-pact-logo.png";
-import pie from "../../../img/left-panel/pie-chart.png";
+import { getUserGroups } from "../../../services/CapstoneApi";
 
 export class MyGroups extends Component {
-	handleClick = e => {
-		console.log(e.target);
+	constructor(props) {
+		super(props);
+		this.leaveGroup = this.leaveGroup.bind(this);
+		this.state = {
+			name: "Please Select a Group",
+			friendlyName: "",
+			createdDate: "",
+			members: {},
+			pintsDonated: 0,
+			groups: {}
+		};
+	}
+
+	componentDidMount() {
+		this.getGroups().then(result =>
+			this.setState({
+				groups: result
+			})
+		);
+	}
+
+	getGroups() {
+		return getUserGroups();
+	}
+
+	handleClick = (e, data) => {
+		this.setState({
+			name: data.name,
+			members: data.members
+		});
+		console.log("state members" + this.state.members);
+	};
+
+	leaveGroup = (e, data) => {
+		// take away group from data
+		delete data[0];
+		console.log(data);
+		console.log(data.name);
+
+		// set states without to new data values to re-render page without group
+		this.setState(
+			{
+				name: data.name
+			},
+			() => console.log(this.state.name)
+		);
 	};
 
 	render() {
@@ -47,11 +90,13 @@ export class MyGroups extends Component {
 				members: {
 					tester: {
 						firstName: "test",
-						lastName: "test"
+						lastName: "test",
+						pintsDonated: 3
 					},
 					ytango: {
 						firstName: "Yulong",
-						lastName: "Tan"
+						lastName: "Tan",
+						pintsDonated: 3
 					}
 				},
 				name: "University of California",
@@ -67,39 +112,66 @@ export class MyGroups extends Component {
 				pintsDonated: 0
 			}
 		];
-		let groups = data.map((group, index) => {
+		// let test = getUserGroups(this.props.uid);
+		// test.then(function(result) {
+		// 	console.log(test);
+		// });
+		const items = Object.keys(this.state.members).map((member, index) => {
 			return (
-				<Card className="single-card" id={group.friendlyName} key={index}>
-					<CardImg top src="" alt="Card image cap" />
+				<ListGroupItem className="justify-content-between" key={index}>
+					<div className="member-row">
+						<span className="member-name">
+							{this.state.members[member].firstName +
+								" " +
+								this.state.members[member].lastName}
+						</span>
+						<span className="float-right">
+							{this.state.members[member].pintsDonated} Pints
+						</span>
+					</div>
+				</ListGroupItem>
+			);
+		});
+
+		let groups = Object.keys(this.state.groups).map((group, index) => {
+			return (
+				<Card
+					className="single-card"
+					id={this.state.groups[group].friendlyName}
+					key={index}
+					defaultChecked={false}
+					onClick={e => this.handleClick(e, data[index])}
+				>
+					{/* <CardImg top src="" alt="Card image cap" /> */}
 					<CardBody
 						className="single-card-body"
 						style={{ textAlign: "center" }}
 					>
-						<CardTitle>{group.name}</CardTitle>
+						<CardTitle>{this.state.groups[group].name}</CardTitle>
 						<div className="card-sub">
 							<CardSubtitle className="member">
 								<span className="member-number">
 									{" "}
-									{Object.keys(group.members).length}{" "}
+									{Object.keys(this.state.groups[group].members).length}
 								</span>
-								<span>Members</span>
+								<span> Members</span>
 							</CardSubtitle>
 						</div>
 						<ButtonGroup vertical className="button-group">
 							{/* <Button className="bg-info">Info</Button> */}
-							<Button className="leave-group-button" color="danger">
-								Leave Group
+							<Button
+								onClick={e => this.leaveGroup(e, data[index])}
+								className="leave-group-button"
+								color="danger"
+							>
+								Leave
 							</Button>
 						</ButtonGroup>
-						{/* <ButtonGroup>
-					
-						</ButtonGroup> */}
 					</CardBody>
 				</Card>
 			);
 		});
 
-		let selectGroup = "";
 		return (
 			<div className="my-group">
 				<Row>
@@ -114,31 +186,12 @@ export class MyGroups extends Component {
 						<Card>
 							<CardImg top src="" alt="Card image cap" />
 							<CardBody>
-								<CardTitle>Givers</CardTitle>
+								<CardTitle>{this.state.name}</CardTitle>
 								<CardSubtitle style={{ textAlign: "center" }}>
-									451 Members
+									{Object.keys(this.state.members).length} Members
 								</CardSubtitle>
 								<p>Members</p>
-								<ListGroup>
-									<ListGroupItem className="justify-content-between">
-										<div className="member-row">
-											<p className="member-name"> Madison S.</p>
-											<p className="pints-donated">14 Pints</p>
-										</div>
-									</ListGroupItem>
-									<ListGroupItem className="justify-content-between">
-										<div className="member-row">
-											<p className="member-name"> Varun M.</p>
-											<p className="pints-donated">5 Pints</p>
-										</div>
-									</ListGroupItem>
-									<ListGroupItem className="justify-content-between">
-										<div className="member-row">
-											<p className="member-name"> Yulong T.</p>
-											<p className="pints-donated">1 Pints</p>
-										</div>
-									</ListGroupItem>
-								</ListGroup>
+								<ListGroup>{items}</ListGroup>
 							</CardBody>
 						</Card>
 					</Col>
