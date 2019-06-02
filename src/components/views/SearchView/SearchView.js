@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  Container, Row, Col, Button, InputGroup, Input, Card, CardHeader, CardFooter, CardBody,
+  Row, Col, Button, InputGroup, Input, Card, CardHeader, CardFooter, CardBody,
   CardTitle, CardText
 } from 'reactstrap';
 import './SearchView.css'
@@ -26,20 +26,20 @@ export class SearchView extends Component {
     if (!this.props.drives) {
       drives = '';
     } else {
-      drives = this.props.drives.map((d) => {
+      drives = this.props.drives.map((item, index) => {
         return (
-          <Col sm='12' md='6' lg='5' key={d.name}>
-            <Card className='mb-4'>
-              <CardHeader tag="h3">{d.name}</CardHeader>
-              <CardBody>
-                <CardTitle>{d.address}</CardTitle>
-                <CardText>{d.date}</CardText>
-                <CardText>{`Donation type: ${d.donationType}`}</CardText>
-                <Button color='danger'>Go somewhere</Button>
-              </CardBody>
-              <CardFooter className="text-muted">{d.distance}</CardFooter>
-            </Card>
-          </Col>
+            <Col className='searchview-card' key={index} sm='12' md='6' lg='5'>
+              <Card className='mb-4'>
+                <CardHeader tag="h3">{item.name}</CardHeader>
+                <CardBody>
+                  <CardTitle>{item.address}</CardTitle>
+                  <CardText>{item.date}</CardText>
+                  <CardText>{`Donation type: ${item.donationType}`}</CardText>
+                  <Button color='danger'>Go somewhere</Button>
+                </CardBody>
+                <CardFooter className="text-muted">{item.distance}</CardFooter>
+              </Card>
+            </Col>
         )
       });
     }

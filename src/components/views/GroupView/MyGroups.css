@@ -38,3 +38,30 @@
 .my-group .button-group {
   padding: 1rem;
 }
+
+#groups-plot-container {
+  position: relative;
+  margin: auto;
+  padding: 5px; 
+  text-align: center;
+  font-family: 'Aleo', serif;
+}
+
+#group-plot-stat {
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 3%;
+  color: #F9423A;
+  font-weight: 700;
+  font-size: 180%;
+}
+
+#group-plot-title {
+  text-align: left;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  font-weight: 400;
+  font-size: 120%;
+  color: #0F1A20;
+}
+

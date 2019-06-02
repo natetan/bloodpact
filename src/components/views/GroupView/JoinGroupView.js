@@ -27,7 +27,8 @@ import "./JoinGroup.css";
 import {
 	createGroup,
 	getAllGroups,
-	joinGroup
+	joinGroup,
+	getUserStats
 } from "../../../services/CapstoneApi.js";
 
 export class JoinGroup extends Component {
@@ -40,22 +41,42 @@ export class JoinGroup extends Component {
 			members: {},
 			pintsDonated: 0,
 			modal: false,
-			groups: {}
+			groups: {},
+			user: {}
 		};
 		this.toggle = this.toggle.bind(this);
 		this.handleJoinGroup = this.handleJoinGroup.bind(this);
 	}
 
 	componentDidMount() {
-		this.getGroups().then(result =>
+		this.getGroups().then(result => {
 			this.setState({
 				groups: result
+			});
+		});
+		getUserStats(this.props.uid).then(result =>
+			this.setState({
+				user: result
 			})
 		);
 	}
 
 	getGroups() {
-		return getAllGroups();
+		let filterGroups = getAllGroups();
+
+		filterGroups.then(res => {
+			console.log(res);
+			for (var i = 0; i < res.length; i++) {
+				if (this.props.uid in res[i].members) {
+					console.log(res[i]);
+					delete res[i];
+				}
+			}
+		});
+		this.setState({
+			groups: filterGroups
+		});
+		return filterGroups;
 	}
 
 	toggle() {
@@ -82,16 +103,19 @@ export class JoinGroup extends Component {
 				joinGroup(
 					groupKey,
 					this.props.uid,
-					"U",
-					"W"
-					// this.props.user.firstName,
-					// this.props.user.lastName
+					this.state.user.firstName,
+					this.state.user.lastName
 				);
 			}
 		);
+		console.log("");
+		this.forceUpdate();
+		console.log("force update was called");
 	};
 
 	render() {
+		console.log("render");
+		console.log(this.state.groups);
 		let trending = Object.keys(this.state.groups).map((group, index) => {
 			return (
 				<ListGroupItem className="justify-content-between" key={index}>
@@ -104,7 +128,6 @@ export class JoinGroup extends Component {
 				</ListGroupItem>
 			);
 		});
-
 		let groups = Object.keys(this.state.groups).map((group, index) => {
 			return (
 				<Card
@@ -141,6 +164,9 @@ export class JoinGroup extends Component {
 					</CardBody>
 				</Card>
 			);
+			// if (!(this.props.uid in this.state.groups[group].members)) {
+
+			// }
 		});
 
 		return (

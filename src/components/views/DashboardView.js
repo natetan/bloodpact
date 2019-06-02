@@ -15,6 +15,8 @@ import { StatisticsView } from "./StatisticsView/StatisticsView";
 import { SearchView } from "./SearchView/SearchView";
 import { getDrives } from "../../services/CapstoneApi";
 import { GroupView } from "./GroupView/GroupView";
+import { RewardsView } from './RewardsView/RewardsView';
+import {FaqView} from './FaqView/FaqView';
 
 export class DashboardView extends Component {
 	constructor(props) {
@@ -52,7 +54,7 @@ export class DashboardView extends Component {
 
 		switch (Number(this.props.tab)) {
 			case 1:
-				content = <StatisticsView />;
+				content = <StatisticsView userStats={this.props.userStats}/>;
 				break;
 			case 2:
 				content = (
@@ -76,10 +78,10 @@ export class DashboardView extends Component {
 				);
 				break;
 			case 4:
-				content = <div>{"Not implemented"}</div>;
+				content = <RewardsView />;
 				break;
 			default:
-				content = <div>{"Not implemented"}</div>;
+				content = <FaqView />;
 				break;
 		}
 
@@ -93,7 +95,7 @@ export class DashboardView extends Component {
 									<NavLink
 										id="1"
 										className={
-											this.props.tab == 1 ? "isActive" : "dash-nav-item"
+											this.props.tab === 1 ? "isActive" : "dash-nav-item"
 										}
 										onClick={this.switchTabs}
 									>
@@ -101,7 +103,7 @@ export class DashboardView extends Component {
 											className="nav-icon"
 											width="10%"
 											src={
-												this.props.tab == 1
+												this.props.tab === 1
 													? PieChartLogo
 													: PieChartLogoInverted
 											}
@@ -114,7 +116,7 @@ export class DashboardView extends Component {
 									<NavLink
 										id="2"
 										className={
-											this.props.tab == 2 ? "isActive" : "dash-nav-item"
+											this.props.tab === 2 ? "isActive" : "dash-nav-item"
 										}
 										onClick={this.switchTabs}
 									>
@@ -122,7 +124,7 @@ export class DashboardView extends Component {
 											className="nav-icon"
 											width="10%"
 											src={
-												this.props.tab == 2
+												this.props.tab === 2
 													? LocationLogoInverted
 													: LocationLogo
 											}
@@ -135,7 +137,7 @@ export class DashboardView extends Component {
 									<NavLink
 										id="3"
 										className={
-											this.props.tab == 3 ? "isActive" : "dash-nav-item"
+											this.props.tab === 3 ? "isActive" : "dash-nav-item"
 										}
 										onClick={this.switchTabs}
 									>
@@ -143,7 +145,7 @@ export class DashboardView extends Component {
 											className="nav-icon"
 											width="10%"
 											src={
-												this.props.tab == 3 ? GroupsLogoInverted : GroupsLogo
+												this.props.tab === 3 ? GroupsLogoInverted : GroupsLogo
 											}
 											alt="community icon"
 										/>
@@ -154,14 +156,14 @@ export class DashboardView extends Component {
 									<NavLink
 										id="4"
 										className={
-											this.props.tab == 4 ? "isActive" : "dash-nav-item"
+											this.props.tab === 4 ? "isActive" : "dash-nav-item"
 										}
 										onClick={this.switchTabs}
 									>
 										<img
 											className="nav-icon"
 											width="10%"
-											src={this.props.tab == 4 ? MedalLogoInverted : MedalLogo}
+											src={this.props.tab === 4 ? MedalLogoInverted : MedalLogo}
 											alt="medal icon"
 										/>
 										Rewards
@@ -171,7 +173,7 @@ export class DashboardView extends Component {
 									<NavLink
 										id="5"
 										className={
-											this.props.tab == 5 ? "isActive" : "dash-nav-item"
+											this.props.tab === 5 ? "isActive" : "dash-nav-item"
 										}
 										onClick={this.switchTabs}
 									>
@@ -179,7 +181,7 @@ export class DashboardView extends Component {
 											className="nav-icon"
 											width="10%"
 											src={
-												this.props.tab == 5
+												this.props.tab === 5
 													? QuestionMarkLogoInverted
 													: QuestionMarkLogo
 											}

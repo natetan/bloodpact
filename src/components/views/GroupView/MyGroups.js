@@ -18,6 +18,9 @@ import {
 	ButtonGroup
 } from "reactstrap";
 import "./MyGroups.css";
+import picture from "../../../img/logos/blood-pact-logo.png";
+import pie from "../../../img/left-panel/pie-chart.png";
+import { GroupsPlot } from "./GroupsPlot.js";
 import { getUserGroups } from "../../../services/CapstoneApi";
 
 export class MyGroups extends Component {
@@ -43,7 +46,7 @@ export class MyGroups extends Component {
 	}
 
 	getGroups() {
-		return getUserGroups();
+		return getUserGroups(this.props.uid);
 	}
 
 	handleClick = (e, data) => {
@@ -53,6 +56,8 @@ export class MyGroups extends Component {
 		});
 		console.log("state members" + this.state.members);
 	};
+
+	handleLeaveGroup() {}
 
 	leaveGroup = (e, data) => {
 		// take away group from data
@@ -70,52 +75,7 @@ export class MyGroups extends Component {
 	};
 
 	render() {
-		let data = [
-			{
-				name: "New Yorkers",
-				friendlyName: "new-yorkers",
-				createdDate: "2019-05-14",
-				members: {
-					phillip: {
-						firstName: "Phil",
-						lastName: "Park",
-						pintsDonated: 3
-					}
-				},
-				pintsDonated: 3
-			},
-			{
-				createdDate: "2019-05-16",
-				friendlyName: "university-of-california",
-				members: {
-					tester: {
-						firstName: "test",
-						lastName: "test",
-						pintsDonated: 3
-					},
-					ytango: {
-						firstName: "Yulong",
-						lastName: "Tan",
-						pintsDonated: 3
-					}
-				},
-				name: "University of California",
-				pintsDonated: 3
-			},
-			{
-				createdDate: "2019-05-10",
-				friendlyName: "university-of-washington",
-				members: {
-					test: "test"
-				},
-				name: "University of Washington",
-				pintsDonated: 0
-			}
-		];
-		// let test = getUserGroups(this.props.uid);
-		// test.then(function(result) {
-		// 	console.log(test);
-		// });
+		console.log(this.state.groups);
 		const items = Object.keys(this.state.members).map((member, index) => {
 			return (
 				<ListGroupItem className="justify-content-between" key={index}>
@@ -140,7 +100,7 @@ export class MyGroups extends Component {
 					id={this.state.groups[group].friendlyName}
 					key={index}
 					defaultChecked={false}
-					onClick={e => this.handleClick(e, data[index])}
+					onClick={e => this.handleClick(e, group[index])}
 				>
 					{/* <CardImg top src="" alt="Card image cap" /> */}
 					<CardBody
@@ -160,7 +120,7 @@ export class MyGroups extends Component {
 						<ButtonGroup vertical className="button-group">
 							{/* <Button className="bg-info">Info</Button> */}
 							<Button
-								onClick={e => this.leaveGroup(e, data[index])}
+								onClick={e => this.leaveGroup(e, group[index])}
 								className="leave-group-button"
 								color="danger"
 							>
@@ -191,7 +151,31 @@ export class MyGroups extends Component {
 									{Object.keys(this.state.members).length} Members
 								</CardSubtitle>
 								<p>Members</p>
-								<ListGroup>{items}</ListGroup>
+								<ListGroup>
+									<ListGroupItem className="justify-content-between">
+										<div className="member-row">
+											<p className="member-name"> Madison S.</p>
+											<p className="pints-donated">14 Pints</p>
+										</div>
+									</ListGroupItem>
+									<ListGroupItem className="justify-content-between">
+										<div className="member-row">
+											<p className="member-name"> Varun M.</p>
+											<p className="pints-donated">5 Pints</p>
+										</div>
+									</ListGroupItem>
+									<ListGroupItem className="justify-content-between">
+										<div className="member-row">
+											<p className="member-name"> Yulong T.</p>
+											<p className="pints-donated">1 Pints</p>
+										</div>
+									</ListGroupItem>
+								</ListGroup>
+								<div id="groups-plot-container">
+									<div id="group-plot-title">Goal</div>
+									<GroupsPlot id="test" />
+									<div id="group-plot-stat">200 Pints</div>
+								</div>
 							</CardBody>
 						</Card>
 					</Col>

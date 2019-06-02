@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Media } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import "./SectionFeature.css";
 
 export class LeftSectionFeature extends Component {

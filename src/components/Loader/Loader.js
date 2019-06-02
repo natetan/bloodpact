@@ -7,7 +7,6 @@ export class Loader extends Component {
     for (let i = 0; i < this.props.number; i++) {
       data.push(i);
     }
-    console.log(data);
     let spinners = data.map((n) => {
       return <Spinner key={n} type='grow' color='danger' />
     })

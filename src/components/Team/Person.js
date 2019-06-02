@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Media } from "reactstrap";
-import "./SinglePerson.css";
+import "./Person.css";
 
 export class Person extends Component {
 	render() {
@@ -19,7 +19,7 @@ export class Person extends Component {
 					</Media>
 					<Media body className="personDescription">
 						<Media className="name">{this.props.person}</Media>
-						{this.props.role}
+						{this.props.projectRole}
 					</Media>
 				</Media>
 			</Container>

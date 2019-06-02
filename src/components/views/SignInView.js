@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Col, Container, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Alert, Container, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 import './SignInView.css';
 
 export class SignInView extends Component {
