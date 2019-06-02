@@ -27,7 +27,7 @@ import {
 	createGroup,
 	getAllGroups,
 	joinGroup
-} from "../../../services/CapstoneApi.js";
+} from "../../../../services/CapstoneApi.js";
 
 export class ModalView extends Component {
 	constructor(props) {

@@ -18,10 +18,10 @@ import {
 	ButtonGroup
 } from "reactstrap";
 import "./MyGroups.css";
-import picture from "../../../img/logos/blood-pact-logo.png";
-import pie from "../../../img/left-panel/pie-chart.png";
-import { GroupsPlot } from "./GroupsPlot.js";
-import { getUserGroups, leaveGroup } from "../../../services/CapstoneApi";
+// import picture from "../../../img/logos/blood-pact-logo.png";
+// import pie from "../../../img/left-panel/pie-chart.png";
+import { GroupsPlot } from "../GroupPlot/GroupsPlot";
+import { getUserGroups, leaveGroup } from "../../../../services/CapstoneApi";
 
 export class MyGroups extends Component {
 	constructor(props) {
@@ -35,6 +35,7 @@ export class MyGroups extends Component {
 			pintsDonated: 0,
 			groups: {}
 		};
+		this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
 	}
 
 	componentDidMount() {
@@ -45,17 +46,29 @@ export class MyGroups extends Component {
 		);
 	}
 
-	handleClick = (e, data) => {
-		this.setState({
-			name: data.name,
-			members: data.members
-		});
+	componentDidUpdate() {
+		getUserGroups(this.props.uid).then(result =>
+			this.setState({
+				groups: result
+			})
+		);
+	}
 
-		console.log("state members" + this.state.members);
+	// Good
+	handleClick = (groupName, groupMembers) => {
+		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
+		this.setState({
+			name: groupKey,
+			members: groupMembers
+		});
 	};
 
 	handleLeaveGroup = groupName => {
-		leaveGroup(groupName, this.props.uid);
+		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
+		leaveGroup(groupKey, this.props.uid);
+		getUserGroups(this.props.uid).then(result =>
+			this.setState({ groups: result })
+		);
 	};
 
 	// Madison
@@ -89,9 +102,12 @@ export class MyGroups extends Component {
 					id={this.state.groups[group].friendlyName}
 					key={index}
 					defaultChecked={false}
-					onClick={e => this.handleClick(e, group[index])}
+					onClick={this.handleClick.bind(
+						null,
+						this.state.groups[group].name,
+						this.state.groups[group].members
+					)}
 				>
-					{/* <CardImg top src="" alt="Card image cap" /> */}
 					<CardBody
 						className="single-card-body"
 						style={{ textAlign: "center" }}
@@ -100,7 +116,6 @@ export class MyGroups extends Component {
 						<div className="card-sub">
 							<CardSubtitle className="member">
 								<span className="member-number">
-									{" "}
 									{Object.keys(this.state.groups[group].members).length}
 								</span>
 								<span> Members</span>
@@ -109,8 +124,10 @@ export class MyGroups extends Component {
 						<ButtonGroup vertical className="button-group">
 							{/* <Button className="bg-info">Info</Button> */}
 							<Button
-								onClick={this.leaveGroup}
-								// onClick={this.handleLeaveGroup(this.state.groups[group].name)}
+								onClick={this.handleLeaveGroup.bind(
+									null,
+									this.state.groups[group].name
+								)}
 								className="leave-group-button"
 								color="danger"
 							>

@@ -1,7 +1,0 @@
-Join Group
-- Issues
-  - Does not refresh page with correct groups
-
-Create Group
-
-Leave Group

@@ -29,7 +29,7 @@ import {
 	getAllGroups,
 	joinGroup,
 	getUserStats
-} from "../../../services/CapstoneApi.js";
+} from "../../../../services/CapstoneApi.js";
 
 export class JoinGroup extends Component {
 	constructor(props) {
@@ -49,11 +49,7 @@ export class JoinGroup extends Component {
 	}
 
 	componentDidMount() {
-		this.getGroups().then(result => {
-			this.setState({
-				groups: result
-			});
-		});
+		this.filterGroups();
 		getUserStats(this.props.uid).then(result =>
 			this.setState({
 				user: result
@@ -61,21 +57,21 @@ export class JoinGroup extends Component {
 		);
 	}
 
-	getGroups() {
-		let filterGroups = getAllGroups();
-		filterGroups.then(res => {
-			console.log(res);
-			for (var i = 0; i < res.length; i++) {
-				if (this.props.uid in res[i].members) {
-					console.log(res[i]);
-					delete res[i];
+	componentDidUpdate() {
+		this.filterGroups();
+	}
+
+	filterGroups() {
+		getAllGroups().then(result => {
+			for (var i = 0; i < result.length; i++) {
+				if (this.props.uid in result[i].members) {
+					delete result[i];
 				}
 			}
+			this.setState({
+				groups: result
+			});
 		});
-		this.setState({
-			groups: filterGroups
-		});
-		return filterGroups;
 	}
 
 	toggle() {
@@ -84,39 +80,34 @@ export class JoinGroup extends Component {
 		}));
 	}
 
-	handleClick = (e, data) => {
+	handleClick = (groupName, groupMembers) => {
+		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
 		this.setState({
-			name: data.name,
-			members: data.members
+			name: groupKey,
+			members: groupMembers
 		});
 	};
 
-	handleJoinGroup = (e, data) => {
-		console.log("handle join group was called");
-		console.log(data.name);
-		this.setState(
-			{
-				name: data.name,
-				members: data.members
-			},
-			() => {
-				let groupKey = this.state.name.replace(/ /g, "-").toLowerCase();
-				joinGroup(
-					groupKey,
-					this.props.uid,
-					this.state.user.firstName,
-					this.state.user.lastName
-				);
-			}
-		);
+	handleJoinGroup = (groupName, groupMembers) => {
+		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
+		joinGroup(
+			groupKey,
+			this.props.uid,
+			this.state.user.firstName,
+			this.state.user.lastName
+		).then(this.filterGroups());
+		console.log("this.state.groups " + this.state.groups);
+
+		// disgusting
+		setTimeout(() => {
+			this.filterGroups();
+		}, 100);
 	};
 
 	render() {
-		console.log("render");
-		console.log(this.state.groups);
-		let trending = Object.keys(this.state.groups).map((group, index) => {
+		let trending = Object.keys(this.state.groups).map(group => {
 			return (
-				<ListGroupItem className="justify-content-between" key={index}>
+				<ListGroupItem className="justify-content-between" key={group}>
 					<div className="member-row">
 						<span className="member-name">{this.state.groups[group].name}</span>
 						<span className="float-right">
@@ -126,16 +117,20 @@ export class JoinGroup extends Component {
 				</ListGroupItem>
 			);
 		});
-		let groups = Object.keys(this.state.groups).map((group, index) => {
+
+		let groups = Object.keys(this.state.groups).map(group => {
 			return (
 				<Card
 					className="single-card"
 					id={this.state.groups[group].friendlyName}
-					key={index}
+					key={group}
 					defaultChecked={false}
-					onClick={e => this.handleClick(e, this.state.groups[index])}
+					onClick={this.handleClick.bind(
+						null,
+						this.state.groups[group].name,
+						this.state.groups[group].members
+					)}
 				>
-					{/* <CardImg top src="" alt="Card image cap" /> */}
 					<CardBody
 						className="single-card-body"
 						style={{ textAlign: "center" }}
@@ -154,7 +149,11 @@ export class JoinGroup extends Component {
 							<Button
 								className="join-group-button"
 								color="danger"
-								onClick={e => this.handleJoinGroup(e, this.state.groups[index])}
+								onClick={this.handleJoinGroup.bind(
+									null,
+									this.state.groups[group].name,
+									this.state.groups[group].members
+								)}
 							>
 								Join
 							</Button>
@@ -162,9 +161,6 @@ export class JoinGroup extends Component {
 					</CardBody>
 				</Card>
 			);
-			// if (!(this.props.uid in this.state.groups[group].members)) {
-
-			// }
 		});
 
 		return (
@@ -186,7 +182,6 @@ export class JoinGroup extends Component {
 							<CardColumns md={4} className="card-col">
 								{groups}
 								<Card className="single-card">
-									<CardImg top src="" alt="Card image cap" />
 									<CardBody
 										className="single-card-body"
 										style={{ textAlign: "center" }}
@@ -291,18 +286,7 @@ export class JoinGroup extends Component {
 													>
 														Create
 													</Button>{" "}
-													<Button
-														color="secondary"
-														// onClick={createGroup(
-														// 	"swag",
-														// 	"huh?",
-														// 	"Boi",
-														// 	"ching",
-														// 	10
-														// )}
-													>
-														Cancel
-													</Button>
+													<Button color="secondary">Cancel</Button>
 												</ModalFooter>
 											</Modal>
 										</ButtonGroup>

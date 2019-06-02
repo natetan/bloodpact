@@ -18,8 +18,8 @@ import {
 	Input
 } from "reactstrap";
 import classnames from "classnames";
-import MyGroup, { MyGroups } from "./MyGroups";
-import JoinGroups, { JoinGroup } from "./JoinGroupView";
+import MyGroup, { MyGroups } from "./MyGroup/MyGroups";
+import JoinGroups, { JoinGroup } from "./JoinGroup/JoinGroupView";
 
 export class GroupView extends Component {
 	constructor(props) {
