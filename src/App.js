@@ -147,7 +147,7 @@ class App extends Component {
 						{...routerProps}
 						tab={this.state.tab}
 						switchTabs={this.switchTabs}
-						displayName={this.state.user.displayName}
+						displayName={this.state.userStats.displayName}
 						uid={this.state.user.uid}
 						firstName={this.state.user.firstName}
 						lastName={this.state.user.lastName}

@@ -21,7 +21,7 @@ import "./MyGroups.css";
 import picture from "../../../img/logos/blood-pact-logo.png";
 import pie from "../../../img/left-panel/pie-chart.png";
 import { GroupsPlot } from "./GroupsPlot.js";
-import { getUserGroups } from "../../../services/CapstoneApi";
+import { getUserGroups, leaveGroup } from "../../../services/CapstoneApi";
 
 export class MyGroups extends Component {
 	constructor(props) {
@@ -38,15 +38,11 @@ export class MyGroups extends Component {
 	}
 
 	componentDidMount() {
-		this.getGroups().then(result =>
+		getUserGroups(this.props.uid).then(result =>
 			this.setState({
 				groups: result
 			})
 		);
-	}
-
-	getGroups() {
-		return getUserGroups(this.props.uid);
 	}
 
 	handleClick = (e, data) => {
@@ -54,44 +50,37 @@ export class MyGroups extends Component {
 			name: data.name,
 			members: data.members
 		});
+
 		console.log("state members" + this.state.members);
 	};
 
-	handleLeaveGroup() {}
+	handleLeaveGroup = groupName => {
+		leaveGroup(groupName, this.props.uid);
+	};
 
-	leaveGroup = (e, data) => {
-		// take away group from data
-		delete data[0];
-		console.log(data);
-		console.log(data.name);
-
-		// set states without to new data values to re-render page without group
-		this.setState(
-			{
-				name: data.name
-			},
-			() => console.log(this.state.name)
-		);
+	// Madison
+	leaveGroup = e => {
+		console.log(this.state.name);
+		console.log(e.target);
 	};
 
 	render() {
-		console.log(this.state.groups);
-		const items = Object.keys(this.state.members).map((member, index) => {
-			return (
-				<ListGroupItem className="justify-content-between" key={index}>
-					<div className="member-row">
-						<span className="member-name">
-							{this.state.members[member].firstName +
-								" " +
-								this.state.members[member].lastName}
-						</span>
-						<span className="float-right">
-							{this.state.members[member].pintsDonated} Pints
-						</span>
-					</div>
-				</ListGroupItem>
-			);
-		});
+		// const items = Object.keys(this.state.members).map((member, index) => {
+		// 	return (
+		// 		<ListGroupItem className="justify-content-between" key={index}>
+		// 			<div className="member-row">
+		// 				<span className="member-name">
+		// 					{this.state.members[member].firstName +
+		// 						" " +
+		// 						this.state.members[member].lastName}
+		// 				</span>
+		// 				<span className="float-right">
+		// 					{this.state.members[member].pintsDonated} Pints
+		// 				</span>
+		// 			</div>
+		// 		</ListGroupItem>
+		// 	);
+		// });
 
 		let groups = Object.keys(this.state.groups).map((group, index) => {
 			return (
@@ -120,7 +109,8 @@ export class MyGroups extends Component {
 						<ButtonGroup vertical className="button-group">
 							{/* <Button className="bg-info">Info</Button> */}
 							<Button
-								onClick={e => this.leaveGroup(e, group[index])}
+								onClick={this.leaveGroup}
+								// onClick={this.handleLeaveGroup(this.state.groups[group].name)}
 								className="leave-group-button"
 								color="danger"
 							>

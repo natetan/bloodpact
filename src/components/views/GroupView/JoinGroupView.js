@@ -63,7 +63,6 @@ export class JoinGroup extends Component {
 
 	getGroups() {
 		let filterGroups = getAllGroups();
-
 		filterGroups.then(res => {
 			console.log(res);
 			for (var i = 0; i < res.length; i++) {
@@ -93,6 +92,8 @@ export class JoinGroup extends Component {
 	};
 
 	handleJoinGroup = (e, data) => {
+		console.log("handle join group was called");
+		console.log(data.name);
 		this.setState(
 			{
 				name: data.name,
@@ -108,9 +109,6 @@ export class JoinGroup extends Component {
 				);
 			}
 		);
-		console.log("");
-		this.forceUpdate();
-		console.log("force update was called");
 	};
 
 	render() {

@@ -1,10 +1,26 @@
 [
   {
     "question": "How do I set goals?",
-    "answer": "In the personal statistics tab, click on the  \"Your Goals\" information card. In the pop-up window, fill out the required fields and hit save."
+    "answer": "In the Personal Statistics tab, click on the \"Your Goals\" information card. In the pop-up window fill out the required fields and click save. If you are changing a previous goal, fill in the required fields and click \"Update\"."
   },
   {
     "question": "How often can I give blood?",
     "answer": "You can make a whole blood donation once every 56 days."
+  },
+  {
+   "question": "How can I update a recent donation?",
+    "answer": "Currently users can only enter their recent data donation information manually through the profile tab. In the coming future, users will be able to scan their donation cards in order to feed the information. We are working with BloodWorks to publicly retrieve user data automatically."
+  },
+  {
+   "question": "How does groups work?",
+    "answer": "BloodPact allows you to join, create and be a part of groups. Select \"Groups\" from the navigation panel. \"My Groups\" shows the groups that you have joined whereas \"Join Groups\" will take you to the page where you can search groups and join them. The right-hand panel shows statistics and members of the selected group."
+  },
+  {
+   "question": "How will I receive my rewards?",
+    "answer": "Once we verify your donations, we will automatically mail you your reward to your registered address. You will get a notification in your account once you win a reward."
+  },
+  {
+  "question": "How can I search for friends?",
+    "answer": "In the \"Groups\" tab, select \"Join Groups\". Enter the group name in the search bar and click \"Join\" on the information card."
   }
 ]

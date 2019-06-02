@@ -4,8 +4,8 @@ const baseUrl = "https://infocapstone2019-server.herokuapp.com";
 //const baseUrl = 'http://localhost:5000';
 
 export async function getUserStats(uid) {
-  let res = await fetch(`${baseUrl}/users/${uid}/stats`);
-  return res.json();
+	let res = await fetch(`${baseUrl}/users/${uid}/stats`);
+	return res.json();
 }
 
 export async function getDrives(zipcode) {
@@ -78,5 +78,21 @@ export async function joinGroup(groupName, uid, firstName, lastName) {
 		}
 	};
 	let res = await fetch(`${baseUrl}/groups/${groupName}/join`, options);
+	return res.json();
+}
+
+export async function leaveGroup(groupName, uid) {
+	let body = {
+		uid: uid
+	};
+	let options = {
+		method: "PUT",
+		body: JSON.stringify(body),
+		headers: {
+			Accept: "application/json",
+			"Content-type": "application/json"
+		}
+	};
+	let res = await fetch(`${baseUrl}/groups/${groupName}/leave`, options);
 	return res.json();
 }
