@@ -57,8 +57,10 @@ export class JoinGroup extends Component {
 		);
 	}
 
-	componentDidUpdate() {
-		this.filterGroups();
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.groups === this.state.groups) {
+			this.filterGroups();
+		}
 	}
 
 	filterGroups() {
@@ -98,13 +100,15 @@ export class JoinGroup extends Component {
 		).then(this.filterGroups());
 		console.log("this.state.groups " + this.state.groups);
 
-		// disgusting
+		// disgusting;
 		setTimeout(() => {
 			this.filterGroups();
 		}, 100);
 	};
 
 	render() {
+		console.log("joingroup render");
+
 		let trending = Object.keys(this.state.groups).map(group => {
 			return (
 				<ListGroupItem className="justify-content-between" key={group}>

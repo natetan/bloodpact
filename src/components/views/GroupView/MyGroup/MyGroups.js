@@ -26,7 +26,6 @@ import { getUserGroups, leaveGroup } from "../../../../services/CapstoneApi";
 export class MyGroups extends Component {
 	constructor(props) {
 		super(props);
-		this.leaveGroup = this.leaveGroup.bind(this);
 		this.state = {
 			name: "Please Select a Group",
 			friendlyName: "",
@@ -35,10 +34,12 @@ export class MyGroups extends Component {
 			pintsDonated: 0,
 			groups: {}
 		};
+
 		this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
 	}
 
 	componentDidMount() {
+		console.log("componentDidMount");
 		getUserGroups(this.props.uid).then(result =>
 			this.setState({
 				groups: result
@@ -46,13 +47,23 @@ export class MyGroups extends Component {
 		);
 	}
 
-	componentDidUpdate() {
-		getUserGroups(this.props.uid).then(result =>
-			this.setState({
-				groups: result
-			})
-		);
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.groups === this.state.groups) {
+			getUserGroups(this.props.uid).then(result =>
+				this.setState({
+					groups: result
+				})
+			);
+		}
 	}
+
+	// componentDidUpdate() {
+	// 	getUserGroups(this.props.uid).then(result =>
+	// 		this.setState({
+	// 			groups: result
+	// 		})
+	// 	);
+	// }
 
 	// Good
 	handleClick = (groupName, groupMembers) => {
@@ -72,15 +83,16 @@ export class MyGroups extends Component {
 	};
 
 	// Madison
-	leaveGroup = e => {
-		console.log(this.state.name);
-		console.log(e.target);
-	};
+	// leaveGroup = e => {
+	// 	console.log(this.state.name);
+	// 	console.log(e.target);
+	// };
 
 	render() {
-		// const items = Object.keys(this.state.members).map((member, index) => {
+		console.log("mygroup render");
+		// const items = Object.keys(this.state.members).map(member => {
 		// 	return (
-		// 		<ListGroupItem className="justify-content-between" key={index}>
+		// 		<ListGroupItem className="justify-content-between" key={member}>
 		// 			<div className="member-row">
 		// 				<span className="member-name">
 		// 					{this.state.members[member].firstName +
@@ -159,6 +171,7 @@ export class MyGroups extends Component {
 								</CardSubtitle>
 								<p>Members</p>
 								<ListGroup>
+									{/* {items} */}
 									<ListGroupItem className="justify-content-between">
 										<div className="member-row">
 											<p className="member-name"> Madison S.</p>
