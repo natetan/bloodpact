@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f055c795323cab96587038998bf31cf8",
+    "revision": "9cb633461f9970cd3cf5b5966822c2e8",
     "url": "/bloodpact/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bloodpact/static/css/2.1e66eaca.chunk.css"
   },
   {
-    "revision": "c62ddc6024ba556b3ac8",
-    "url": "/bloodpact/static/css/main.71be60aa.chunk.css"
+    "revision": "a3b10193bf956f48f17d",
+    "url": "/bloodpact/static/css/main.babfb413.chunk.css"
   },
   {
     "revision": "03f5a7a572901f51d6af",
     "url": "/bloodpact/static/js/2.8001018f.chunk.js"
   },
   {
-    "revision": "c62ddc6024ba556b3ac8",
-    "url": "/bloodpact/static/js/main.3f20af09.chunk.js"
+    "revision": "a3b10193bf956f48f17d",
+    "url": "/bloodpact/static/js/main.14017541.chunk.js"
   },
   {
     "revision": "306b6dd823b50240d4e9",

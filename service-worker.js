@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/bloodpact/precache-manifest.ec0967379db42053fe0d9798ad0d3d3f.js"
+  "/bloodpact/precache-manifest.708c6744b43d9bae5fb3de804f07eea5.js"
 );
 
 self.addEventListener('message', (event) => {
