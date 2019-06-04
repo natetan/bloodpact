@@ -14,7 +14,7 @@ export async function getDrives(zipcode) {
 }
 
 export async function getAllGroups() {
-  let res = await fetch(`${baseUrl}/groups/all`);
+  let res = await fetch(`${baseUrl}/groups/`);
   return res.json();
 }
 
@@ -85,5 +85,17 @@ export async function leaveGroup(groupName, uid) {
     }
   };
   let res = await fetch(`${baseUrl}/groups/${groupName}/leave`, options);
+  return res.json();
+}
+
+export async function deleteGroup(groupName) {
+  let options = {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-type': 'application/json'
+    }
+  };
+  let res = await fetch(`${baseUrl}/groups/${groupName}/`, options);
   return res.json();
 }
