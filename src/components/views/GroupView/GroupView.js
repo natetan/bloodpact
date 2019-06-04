@@ -11,11 +11,15 @@ import {
 	CardTitle,
 	CardText,
 	Row,
-	Col
+	Col,
+	Form,
+	FormGroup,
+	Label,
+	Input
 } from "reactstrap";
 import classnames from "classnames";
-import MyGroup, { MyGroups } from "./MyGroups";
-import JoinGroups, { JoinGroup } from "./JoinGroupView";
+import { MyGroups } from "./MyGroup/MyGroups";
+import { JoinGroup } from "./JoinGroup/JoinGroupView";
 
 export class GroupView extends Component {
 	constructor(props) {
@@ -37,8 +41,10 @@ export class GroupView extends Component {
 	render() {
 		return (
 			<div className="group">
-				<Nav tabs>
-					<NavItem>
+				<h1 className="groupHeader">JOIN.DONATE.COMPETE</h1>
+
+				<Nav pills className="group-tabs">
+					<NavItem className="tabs">
 						<NavLink
 							className={classnames({
 								active: this.state.activeTabGroup === "1"
@@ -50,7 +56,7 @@ export class GroupView extends Component {
 							My Groups
 						</NavLink>
 					</NavItem>
-					<NavItem>
+					<NavItem className="tabs">
 						<NavLink
 							className={classnames({
 								active: this.state.activeTabGroup === "2"
@@ -65,10 +71,10 @@ export class GroupView extends Component {
 				</Nav>
 				<TabContent activeTab={this.state.activeTabGroup}>
 					<TabPane tabId="1">
-						<MyGroups />
+						<MyGroups uid={this.props.uid} />
 					</TabPane>
 					<TabPane tabId="2">
-						<JoinGroup />
+						<JoinGroup uid={this.props.uid} />
 					</TabPane>
 				</TabContent>
 			</div>

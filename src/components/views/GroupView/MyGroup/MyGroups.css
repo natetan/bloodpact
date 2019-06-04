@@ -1,49 +1,41 @@
-.card-section {}
-
-.groups-left-section {
+.my-group .groups-left-section {
   width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
 
-.single-card {
+.my-group .single-card {
   min-height: 200px;
   min-width: 200px;
 }
 
-.single-card-body.card-body {
+.my-group .single-card-body.card-body {
   align-content: center;
   align-items: center;
 }
 
-.leave-group-button {
+.my-group .leave-group-button {
   color: white;
   background-color: red;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  border-radius: 20px;
 }
 
-.card-col {
+.my-group .card-col {
   margin-top: 2rem;
 }
 
-.card-subtitle.member, .card-subtitle.member-number {
+.my-group .card-subtitle.member, .my-group .card-subtitle.member-number {
   display: inline;
 }
 
-.card-subtitle.member-number {
+.my-group .float-right, .my-group .member-number, .my-group .card-subtitle.member-number {
   color: red;
 }
 
-.member-name, .pints-donated {
-  display: inline;
-}
-
-.pints-donated {
-  align-items: right;
-  margin-left: 2rem;
-  color: red;
-}
-
-.button-group {
+.my-group .button-group {
   padding: 1rem;
 }
 

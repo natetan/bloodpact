@@ -8,7 +8,7 @@ import { SignUpView } from "./components/views/SignUpView";
 import { SignInView } from "./components/views/SignInView";
 import { BloodPactFooter } from "./components/footers/BloodPactFooter";
 import { DashboardView } from "./components/views/DashboardView";
-import { getUserStats } from "./services/CapstoneApi.js"
+import { getUserStats } from "./services/CapstoneApi.js";
 
 class App extends Component {
 	constructor(props) {
@@ -24,9 +24,9 @@ class App extends Component {
 			// If user is logged in
 			if (firebaseUser) {
 				this.setState({ user: firebaseUser });
-				getUserStats(this.state.user.uid).then((data) => {
+				getUserStats(this.state.user.uid).then(data => {
 					this.setState({ userStats: data });
-				})
+				});
 			} else {
 				this.setState({
 					firebaseUser: null,
@@ -57,8 +57,8 @@ class App extends Component {
 						email: user.email,
 						pintsDonated: 0,
 						donationGoal: 10,
-						donations: ['2019-01-01', '2019-03-03', '2019-05-05'],
-						nextEligibleDate: '2019-06-30'
+						donations: ["2019-01-01", "2019-03-03", "2019-05-05"],
+						nextEligibleDate: "2019-06-30"
 					});
 					fbUser
 						.updateProfile({
@@ -107,7 +107,6 @@ class App extends Component {
 	};
 
 	render() {
-
 		let signUpView = routerProps => {
 			return (
 				<SignUpView
@@ -142,14 +141,14 @@ class App extends Component {
 		}
 
 		let mainView = routerProps => {
-			if (this.state.userStats) {
+			if (this.state.userStats && this.state.user) {
 				return (
 					<DashboardView
 						{...routerProps}
 						tab={this.state.tab}
 						switchTabs={this.switchTabs}
-						displayName={this.state.user.displayName}
-						userStats={this.state.userStats}
+						displayName={this.state.userStats.displayName}
+						uid={this.state.user.uid}
 					/>
 				);
 			} else {

@@ -15,8 +15,8 @@ import { StatisticsView } from "./StatisticsView/StatisticsView";
 import { SearchView } from "./SearchView/SearchView";
 import { getDrives } from "../../services/CapstoneApi";
 import { GroupView } from "./GroupView/GroupView";
-import { RewardsView } from './RewardsView/RewardsView';
-import {FaqView} from './FaqView/FaqView';
+import { RewardsView } from "./RewardsView/RewardsView";
+import { FaqView } from "./FaqView/FaqView";
 
 export class DashboardView extends Component {
 	constructor(props) {
@@ -54,7 +54,7 @@ export class DashboardView extends Component {
 
 		switch (Number(this.props.tab)) {
 			case 1:
-				content = <StatisticsView userStats={this.props.userStats}/>;
+				content = <StatisticsView userStats={this.props.userStats} />;
 				break;
 			case 2:
 				content = (
@@ -68,7 +68,7 @@ export class DashboardView extends Component {
 				);
 				break;
 			case 3:
-				content = <GroupView />;
+				content = <GroupView uid={this.props.uid} />;
 				break;
 			case 4:
 				content = <RewardsView />;

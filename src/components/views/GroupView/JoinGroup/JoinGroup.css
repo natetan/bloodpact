@@ -1,0 +1,64 @@
+.join-group .groups-left-section {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.join-group .single-card {
+  min-height: 200px;
+  min-width: 200px;
+}
+
+.join-group .single-card-body.card-body {
+  align-content: center;
+  align-items: center;
+}
+
+.join-group .join-group-button {
+  color: white;
+  background-color: red;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.join-group .card-col {
+  margin-top: 2rem;
+}
+
+.join-group .card-subtitle.member, .my-group .card-subtitle.member-number {
+  display: inline;
+}
+
+.join-group .button-group {
+  padding: 1rem;
+}
+
+.join-group .search-form-group {
+  padding-left: 1rem;
+  padding-top: 2rem;
+  padding-right: 61rem;
+  border-radius: 40px;
+}
+
+.join-group .search-bar {
+  border-radius: 20px;
+  padding-left: 1rem;
+}
+
+.join-group .trending-title, .join-group .member-number, .join-group .float-right, .join-group .card-subtitle.member-number {
+  color: red;
+}
+
+.join-group-button.btn.btn-danger {
+  background-color: red;
+}
+
+.join-group .float-right {
+  padding-left: 1rem;
+}
+
+.join-group .group-name {
+  padding-right: 1rem;
+}
