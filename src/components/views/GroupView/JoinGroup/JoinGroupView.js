@@ -162,12 +162,21 @@ export class JoinGroup extends Component {
 			return (
 				<ListGroupItem className="justify-content-between" key={group}>
 					<div className="group-row">
-						<span className="group-name">
+						<Row>
+							<Col xs="6" className="group-name">
+								{this.state.allGroups[group].name}
+							</Col>
+							<Col xs="6" className="float-right">
+								{this.state.allGroups[group].pintsDonated} Pints
+							</Col>
+						</Row>
+
+						{/* <span className="group-name" xs="6">
 							{this.state.allGroups[group].name}
 						</span>
-						<span className="float-right">
+						<span className="float-right" xs="6">
 							{this.state.allGroups[group].pintsDonated} Pints
-						</span>
+						</span> */}
 					</div>
 				</ListGroupItem>
 			);
