@@ -44,7 +44,9 @@ export class JoinGroup extends Component {
 			groups: {},
 			user: {},
 			modal: false,
-			formGroupName: ""
+			formGroupName: "",
+			formPintsDonated: 0,
+			allGroups: {}
 		};
 		this.toggle = this.toggle.bind(this);
 		this.handleJoinGroup = this.handleJoinGroup.bind(this);
@@ -52,6 +54,10 @@ export class JoinGroup extends Component {
 	}
 
 	componentDidMount() {
+		getAllGroups().then(result => {
+			this.setState({ allGroups: result });
+		});
+		this.sortGroupsByPintsDonated();
 		this.filterGroups();
 		getUserStats(this.props.uid).then(result =>
 			this.setState({
@@ -104,42 +110,63 @@ export class JoinGroup extends Component {
 			this.state.user.lastName
 		).then(this.filterGroups());
 
-		// disgusting;
 		setTimeout(() => {
 			this.filterGroups();
 		}, 100);
 	};
 
 	postNewGroup() {
+		console.log("Post new group[ was called");
 		createGroup(
 			this.state.formGroupName,
 			this.props.uid,
 			this.state.user.firstName,
 			this.state.user.lastName,
-			this.state.user.pintsDonated
-		).then(this.toggle());
+			this.state.formPintsDonated
+		)
+			.then(this.toggle())
+			.then(this.sortGroupsByPintsDonated());
+
+		setTimeout(() => {
+			this.sortGroupsByPintsDonated();
+		}, 100);
 	}
 
 	handleChange(event) {
 		this.setState({ [event.target.name]: event.target.value });
-		console.log(this.state.formGroupName);
 	}
 
 	handleSubmit = event => {
-		console.log("handle submit was called");
 		event.preventDefault();
 	};
 
-	render() {
-		console.log("joingroup render");
+	sortGroupsByPintsDonated() {
+		getAllGroups().then(result => {
+			var data = result;
+			var arr = [];
+			for (let key in data) {
+				data[key]["key"] = key;
+				arr.push(data[key]);
+			}
+			arr.sort(function(a, b) {
+				return parseInt(b.pintsDonated) - parseInt(a.pintsDonated);
+			});
+			this.setState({
+				allGroups: arr
+			});
+		});
+	}
 
-		let trending = Object.keys(this.state.groups).map(group => {
+	render() {
+		let topSection = Object.keys(this.state.allGroups).map(group => {
 			return (
 				<ListGroupItem className="justify-content-between" key={group}>
-					<div className="member-row">
-						<span className="member-name">{this.state.groups[group].name}</span>
+					<div className="group-row">
+						<span className="group-name">
+							{this.state.allGroups[group].name}
+						</span>
 						<span className="float-right">
-							{this.state.groups[group].pintsDonated}
+							{this.state.allGroups[group].pintsDonated} Pints
 						</span>
 					</div>
 				</ListGroupItem>
@@ -190,7 +217,7 @@ export class JoinGroup extends Component {
 
 		return (
 			<div className="join-group">
-				<Form className="search-form">
+				{/* <Form className="search-form">
 					<FormGroup className="search-form-group">
 						<Input
 							type="search"
@@ -200,7 +227,7 @@ export class JoinGroup extends Component {
 							className="search-bar"
 						/>
 					</FormGroup>
-				</Form>
+				</Form> */}
 				<Row>
 					<Col md={8}>
 						<div className="groups-left-section">
@@ -213,10 +240,6 @@ export class JoinGroup extends Component {
 									>
 										<CardTitle>Create Your Own Group</CardTitle>
 										<ButtonGroup vertical className="button-group">
-											{/* <Button className="bg-info">Info</Button> */}
-											{/* <Button className="join-group-button" color="danger">
-												Create
-                      </Button> */}
 											<Button
 												className="join-group-button"
 												color="danger"
@@ -249,34 +272,20 @@ export class JoinGroup extends Component {
 															</Col>
 														</FormGroup>
 
-														{/* <FormGroup row>
+														<FormGroup row>
 															<Label for="pints-donated" sm={2}>
 																Pints Donated
 															</Label>
 															<Col sm={10}>
 																<Input
-																	type="pints-donated"
-																	name="pints-donated"
-																	id="pintsDonated"
+																	type="formPintsDonated"
+																	name="formPintsDonated"
+																	id="formPintsDonated"
 																	placeholder="Input pints donated"
+																	onChange={event => this.handleChange(event)}
 																/>
 															</Col>
-														</FormGroup> */}
-														{/* <FormGroup row>
-															<Label for="exampleFile" sm={2}>
-																Group Picture
-															</Label>
-															<Col sm={10}>
-																<Input
-																	type="file"
-																	name="file"
-																	id="exampleFile"
-																/>
-																<FormText color="muted">
-																	Upload a group picture.
-																</FormText>
-															</Col>
-														</FormGroup> */}
+														</FormGroup>
 													</Form>
 												</ModalBody>
 												<ModalFooter>
@@ -284,7 +293,7 @@ export class JoinGroup extends Component {
 														className="join-group-button"
 														color="danger"
 														onClick={this.toggle}
-														onClick={this.postNewGroup}
+														onClick={this.postNewGroup.bind(null)}
 													>
 														Create
 													</Button>
@@ -302,8 +311,8 @@ export class JoinGroup extends Component {
 					<Col md={4}>
 						<Card>
 							<CardBody>
-								<CardTitle className="trending-title">Trending</CardTitle>
-								{trending}
+								<CardTitle className="trending-title">Leaderboard</CardTitle>
+								{topSection}
 							</CardBody>
 						</Card>
 					</Col>

@@ -54,3 +54,11 @@
 .join-group-button.btn.btn-danger {
   background-color: red;
 }
+
+.join-group .float-right {
+  padding-left: 1rem;
+}
+
+.join-group .group-name {
+  padding-right: 1rem;
+}

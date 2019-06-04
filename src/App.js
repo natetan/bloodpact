@@ -141,7 +141,7 @@ class App extends Component {
 		}
 
 		let mainView = routerProps => {
-			if (this.state.userStats) {
+			if (this.state.userStats && this.state.user) {
 				return (
 					<DashboardView
 						{...routerProps}

@@ -24,7 +24,8 @@ import { GroupsPlot } from "../GroupPlot/GroupsPlot";
 import {
 	getUserGroups,
 	leaveGroup,
-	getUserStats
+	getUserStats,
+	deleteGroup
 } from "../../../../services/CapstoneApi";
 
 export class MyGroups extends Component {
@@ -42,12 +43,10 @@ export class MyGroups extends Component {
 	}
 
 	componentDidMount() {
-		console.log("componentDidMount");
 		this.setUserGroups();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log("componentdidupdate in groups");
 		if (prevState.groups === this.state.groups) {
 			this.setUserGroups();
 		}
@@ -69,13 +68,13 @@ export class MyGroups extends Component {
 		});
 	};
 
-	handleLeaveGroup = groupName => {
-		console.log("handle leave group");
+	handleLeaveGroup = (groupName, groupMembers) => {
 		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
-		console.log(groupKey + " " + this.props.uid);
-		console.log(leaveGroup(groupKey, this.props.uid));
-
-		leaveGroup(groupKey, this.props.uid).then(this.setUserGroups());
+		if (groupMembers === 1) {
+			deleteGroup(groupKey).then(this.setUserGroups());
+		} else {
+			leaveGroup(groupKey, this.props.uid).then(this.setUserGroups());
+		}
 		setTimeout(() => {
 			this.setUserGroups();
 		}, 100);
@@ -91,7 +90,7 @@ export class MyGroups extends Component {
 
 	render() {
 		console.log("mygroup render");
-		console.log(this.state.groups);
+
 		const items = Object.keys(this.state.members).map(member => {
 			// console.log(this.getMemberPintsDonated(member));
 			return (
@@ -141,7 +140,8 @@ export class MyGroups extends Component {
 							<Button
 								onClick={this.handleLeaveGroup.bind(
 									null,
-									this.state.groups[group].name
+									this.state.groups[group].name,
+									Object.keys(this.state.groups[group].members).length
 								)}
 								className="leave-group-button"
 								color="danger"
