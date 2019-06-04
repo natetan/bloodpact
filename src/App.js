@@ -149,8 +149,6 @@ class App extends Component {
 						switchTabs={this.switchTabs}
 						displayName={this.state.userStats.displayName}
 						uid={this.state.user.uid}
-						firstName={this.state.user.firstName}
-						lastName={this.state.user.lastName}
 					/>
 				);
 			} else {

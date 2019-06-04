@@ -68,14 +68,7 @@ export class DashboardView extends Component {
 				);
 				break;
 			case 3:
-				content = (
-					<GroupView
-						uid={this.props.uid}
-						user={this.props.user}
-						firstName={this.props.firstName}
-						lastName={this.props.lastName}
-					/>
-				);
+				content = <GroupView uid={this.props.uid} />;
 				break;
 			case 4:
 				content = <RewardsView />;

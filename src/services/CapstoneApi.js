@@ -96,3 +96,16 @@ export async function leaveGroup(groupName, uid) {
 	let res = await fetch(`${baseUrl}/groups/${groupName}/leave`, options);
 	return res.json();
 }
+
+export async function deleteGroup(groupName) {
+	let options = {
+		method: "DELETE",
+		body: JSON.stringify({ id: groupName }),
+		headers: {
+			Accept: "application/json",
+			"Content-type": "application/json"
+		}
+	};
+	let res = await fetch(`${baseUrl}/groups/${groupName}/delete`, options);
+	return res.json();
+}

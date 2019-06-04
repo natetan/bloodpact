@@ -18,8 +18,8 @@ import {
 	Input
 } from "reactstrap";
 import classnames from "classnames";
-import MyGroup, { MyGroups } from "./MyGroup/MyGroups";
-import JoinGroups, { JoinGroup } from "./JoinGroup/JoinGroupView";
+import { MyGroups } from "./MyGroup/MyGroups";
+import { JoinGroup } from "./JoinGroup/JoinGroupView";
 
 export class GroupView extends Component {
 	constructor(props) {
@@ -71,20 +71,10 @@ export class GroupView extends Component {
 				</Nav>
 				<TabContent activeTab={this.state.activeTabGroup}>
 					<TabPane tabId="1">
-						<MyGroups
-							uid={this.props.uid}
-							user={this.props.user}
-							firstName={this.props.firstName}
-							lastName={this.props.lastName}
-						/>
+						<MyGroups uid={this.props.uid} />
 					</TabPane>
 					<TabPane tabId="2">
-						<JoinGroup
-							uid={this.props.uid}
-							user={this.props.user}
-							firstName={this.props.firstName}
-							lastName={this.props.lastName}
-						/>
+						<JoinGroup uid={this.props.uid} />
 					</TabPane>
 				</TabContent>
 			</div>

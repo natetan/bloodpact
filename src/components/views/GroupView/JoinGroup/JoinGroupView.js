@@ -42,10 +42,13 @@ export class JoinGroup extends Component {
 			pintsDonated: 0,
 			modal: false,
 			groups: {},
-			user: {}
+			user: {},
+			modal: false,
+			formGroupName: ""
 		};
 		this.toggle = this.toggle.bind(this);
 		this.handleJoinGroup = this.handleJoinGroup.bind(this);
+		this.postNewGroup = this.postNewGroup.bind(this);
 	}
 
 	componentDidMount() {
@@ -66,8 +69,10 @@ export class JoinGroup extends Component {
 	filterGroups() {
 		getAllGroups().then(result => {
 			for (var i = 0; i < result.length; i++) {
-				if (this.props.uid in result[i].members) {
-					delete result[i];
+				if (result[i].members !== undefined) {
+					if (this.props.uid in result[i].members) {
+						delete result[i];
+					}
 				}
 			}
 			this.setState({
@@ -77,20 +82,20 @@ export class JoinGroup extends Component {
 	}
 
 	toggle() {
+		console.log("toggle was called");
 		this.setState(prevState => ({
 			modal: !prevState.modal
 		}));
 	}
 
-	handleClick = (groupName, groupMembers) => {
+	handleClick = groupName => {
 		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
 		this.setState({
-			name: groupKey,
-			members: groupMembers
+			name: groupKey
 		});
 	};
 
-	handleJoinGroup = (groupName, groupMembers) => {
+	handleJoinGroup = groupName => {
 		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
 		joinGroup(
 			groupKey,
@@ -98,12 +103,31 @@ export class JoinGroup extends Component {
 			this.state.user.firstName,
 			this.state.user.lastName
 		).then(this.filterGroups());
-		console.log("this.state.groups " + this.state.groups);
 
 		// disgusting;
 		setTimeout(() => {
 			this.filterGroups();
 		}, 100);
+	};
+
+	postNewGroup() {
+		createGroup(
+			this.state.formGroupName,
+			this.props.uid,
+			this.state.user.firstName,
+			this.state.user.lastName,
+			this.state.user.pintsDonated
+		).then(this.toggle());
+	}
+
+	handleChange(event) {
+		this.setState({ [event.target.name]: event.target.value });
+		console.log(this.state.formGroupName);
+	}
+
+	handleSubmit = event => {
+		console.log("handle submit was called");
+		event.preventDefault();
 	};
 
 	render() {
@@ -129,11 +153,7 @@ export class JoinGroup extends Component {
 					id={this.state.groups[group].friendlyName}
 					key={group}
 					defaultChecked={false}
-					onClick={this.handleClick.bind(
-						null,
-						this.state.groups[group].name,
-						this.state.groups[group].members
-					)}
+					onClick={this.handleClick.bind(null, this.state.groups[group].name)}
 				>
 					<CardBody
 						className="single-card-body"
@@ -143,7 +163,9 @@ export class JoinGroup extends Component {
 						<div className="card-sub">
 							<CardSubtitle className="member">
 								<span className="member-number">
-									{Object.keys(this.state.groups[group].members).length}
+									{this.state.groups[group].members
+										? Object.keys(this.state.groups[group].members).length
+										: 0}
 								</span>
 								<span> Members</span>
 							</CardSubtitle>
@@ -155,8 +177,7 @@ export class JoinGroup extends Component {
 								color="danger"
 								onClick={this.handleJoinGroup.bind(
 									null,
-									this.state.groups[group].name,
-									this.state.groups[group].members
+									this.state.groups[group].name
 								)}
 							>
 								Join
@@ -220,39 +241,15 @@ export class JoinGroup extends Component {
 															<Col sm={10}>
 																<Input
 																	type="group"
-																	name="group-name"
-																	id="groupName"
+																	name="formGroupName"
+																	id="formGroupName"
 																	placeholder="Input Group Name"
+																	onChange={event => this.handleChange(event)}
 																/>
 															</Col>
 														</FormGroup>
-														<FormGroup row>
-															<Label for="first-name" sm={2}>
-																First Name
-															</Label>
-															<Col sm={10}>
-																<Input
-																	type="first-name"
-																	name="first-name"
-																	id="firstName"
-																	placeholder="Input your first name"
-																/>
-															</Col>
-														</FormGroup>
-														<FormGroup row>
-															<Label for="last-name" sm={2}>
-																Last Name
-															</Label>
-															<Col sm={10}>
-																<Input
-																	type="last-name"
-																	name="last-name"
-																	id="lastName"
-																	placeholder="Input your last name"
-																/>
-															</Col>
-														</FormGroup>
-														<FormGroup row>
+
+														{/* <FormGroup row>
 															<Label for="pints-donated" sm={2}>
 																Pints Donated
 															</Label>
@@ -264,8 +261,8 @@ export class JoinGroup extends Component {
 																	placeholder="Input pints donated"
 																/>
 															</Col>
-														</FormGroup>
-														<FormGroup row>
+														</FormGroup> */}
+														{/* <FormGroup row>
 															<Label for="exampleFile" sm={2}>
 																Group Picture
 															</Label>
@@ -279,7 +276,7 @@ export class JoinGroup extends Component {
 																	Upload a group picture.
 																</FormText>
 															</Col>
-														</FormGroup>
+														</FormGroup> */}
 													</Form>
 												</ModalBody>
 												<ModalFooter>
@@ -287,10 +284,13 @@ export class JoinGroup extends Component {
 														className="join-group-button"
 														color="danger"
 														onClick={this.toggle}
+														onClick={this.postNewGroup}
 													>
 														Create
-													</Button>{" "}
-													<Button color="secondary">Cancel</Button>
+													</Button>
+													<Button color="secondary" onClick={this.toggle}>
+														Cancel
+													</Button>
 												</ModalFooter>
 											</Modal>
 										</ButtonGroup>

@@ -21,7 +21,11 @@ import "./MyGroups.css";
 // import picture from "../../../img/logos/blood-pact-logo.png";
 // import pie from "../../../img/left-panel/pie-chart.png";
 import { GroupsPlot } from "../GroupPlot/GroupsPlot";
-import { getUserGroups, leaveGroup } from "../../../../services/CapstoneApi";
+import {
+	getUserGroups,
+	leaveGroup,
+	getUserStats
+} from "../../../../services/CapstoneApi";
 
 export class MyGroups extends Component {
 	constructor(props) {
@@ -34,12 +38,23 @@ export class MyGroups extends Component {
 			pintsDonated: 0,
 			groups: {}
 		};
-
 		this.handleLeaveGroup = this.handleLeaveGroup.bind(this);
 	}
 
 	componentDidMount() {
 		console.log("componentDidMount");
+		this.setUserGroups();
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		console.log("componentdidupdate in groups");
+		if (prevState.groups === this.state.groups) {
+			this.setUserGroups();
+		}
+	}
+
+	setUserGroups() {
+		console.log("sset user groups");
 		getUserGroups(this.props.uid).then(result =>
 			this.setState({
 				groups: result
@@ -47,65 +62,53 @@ export class MyGroups extends Component {
 		);
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		if (prevState.groups === this.state.groups) {
-			getUserGroups(this.props.uid).then(result =>
-				this.setState({
-					groups: result
-				})
-			);
-		}
-	}
-
-	// componentDidUpdate() {
-	// 	getUserGroups(this.props.uid).then(result =>
-	// 		this.setState({
-	// 			groups: result
-	// 		})
-	// 	);
-	// }
-
-	// Good
 	handleClick = (groupName, groupMembers) => {
-		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
 		this.setState({
-			name: groupKey,
+			name: groupName,
 			members: groupMembers
 		});
 	};
 
 	handleLeaveGroup = groupName => {
+		console.log("handle leave group");
 		let groupKey = groupName.replace(/ /g, "-").toLowerCase();
-		leaveGroup(groupKey, this.props.uid);
-		getUserGroups(this.props.uid).then(result =>
-			this.setState({ groups: result })
-		);
+		console.log(groupKey + " " + this.props.uid);
+		console.log(leaveGroup(groupKey, this.props.uid));
+
+		leaveGroup(groupKey, this.props.uid).then(this.setUserGroups());
+		setTimeout(() => {
+			this.setUserGroups();
+		}, 100);
 	};
 
-	// Madison
-	// leaveGroup = e => {
-	// 	console.log(this.state.name);
-	// 	console.log(e.target);
-	// };
+	// getMemberPintsDonated(uid) {
+	// 	let pints;
+	// 	getUserStats(uid).then(result => {
+	// 		pints = result.pintsDonated;
+	// 	});
+	// 	return pints;
+	// }
 
 	render() {
 		console.log("mygroup render");
-		// const items = Object.keys(this.state.members).map(member => {
-		// 	return (
-		// 		<ListGroupItem className="justify-content-between" key={member}>
-		// 			<div className="member-row">
-		// 				<span className="member-name">
-		// 					{this.state.members[member].firstName +
-		// 						" " +
-		// 						this.state.members[member].lastName}
-		// 				</span>
-		// 				<span className="float-right">
-		// 					{this.state.members[member].pintsDonated} Pints
-		// 				</span>
-		// 			</div>
-		// 		</ListGroupItem>
-		// 	);
-		// });
+		console.log(this.state.groups);
+		const items = Object.keys(this.state.members).map(member => {
+			// console.log(this.getMemberPintsDonated(member));
+			return (
+				<ListGroupItem className="justify-content-between" key={member}>
+					<div className="member-row">
+						<span className="member-name">
+							{this.state.members[member].firstName +
+								" " +
+								this.state.members[member].lastName}
+						</span>
+						{/* <span className="float-right">
+							{this.state.members[member].pintsDonated} Pints
+						</span> */}
+					</div>
+				</ListGroupItem>
+			);
+		});
 
 		let groups = Object.keys(this.state.groups).map((group, index) => {
 			return (
@@ -170,27 +173,7 @@ export class MyGroups extends Component {
 									{Object.keys(this.state.members).length} Members
 								</CardSubtitle>
 								<p>Members</p>
-								<ListGroup>
-									{/* {items} */}
-									<ListGroupItem className="justify-content-between">
-										<div className="member-row">
-											<p className="member-name"> Madison S.</p>
-											<p className="pints-donated">14 Pints</p>
-										</div>
-									</ListGroupItem>
-									<ListGroupItem className="justify-content-between">
-										<div className="member-row">
-											<p className="member-name"> Varun M.</p>
-											<p className="pints-donated">5 Pints</p>
-										</div>
-									</ListGroupItem>
-									<ListGroupItem className="justify-content-between">
-										<div className="member-row">
-											<p className="member-name"> Yulong T.</p>
-											<p className="pints-donated">1 Pints</p>
-										</div>
-									</ListGroupItem>
-								</ListGroup>
+								<ListGroup>{items}</ListGroup>
 								<div id="groups-plot-container">
 									<div id="group-plot-title">Goal</div>
 									<GroupsPlot id="test" />
